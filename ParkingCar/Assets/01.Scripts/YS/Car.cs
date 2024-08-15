@@ -49,8 +49,8 @@ public class Car : MonoBehaviour
         else
         {
             Vector3 dir = _top.left.Dir + _top.right.Dir + _bottom.left.Dir + _bottom.right.Dir;
-            float verDot = Mathf.Min(Vector3.Dot(dir, Vector3.up), Vector3.Dot(dir, Vector3.down));
-            float horDot = Mathf.Min(Vector3.Dot(dir, Vector3.left), Vector3.Dot(dir, Vector3.right));
+            float verDot = Mathf.Max(Vector3.Dot(dir, transform.forward), Vector3.Dot(dir, -transform.forward));
+            float horDot = Mathf.Max(Vector3.Dot(dir, -transform.right), Vector3.Dot(dir, transform.right));
             if (verDot > horDot)
                 CheckVerticalDivision();
             else
