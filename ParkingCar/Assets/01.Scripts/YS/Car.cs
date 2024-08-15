@@ -13,6 +13,9 @@ public struct Group
 
 public class Car : MonoBehaviour
 {
+    [field:SerializeField] public float speed { get; private set; }
+    [field:SerializeField] public float accel { get; private set; }
+    
     [SerializeField] private Group _top;
     [SerializeField] private Group _bottom;
     [SerializeField] private Group _left;
@@ -62,17 +65,20 @@ public class Car : MonoBehaviour
     {
         if (_top.dot + _bottom.dot < 1.94f)
         {
-            if ((_top.cross + _bottom.cross).y > 0
-                || Vector3.Dot((_left.left.Dir + _left.right.Dir).normalized,
-                    (_right.left.Dir + _right.right.Dir).normalized) is > -1 and < 0)
+            if (_left.cross.y < -0.1f && _right.cross.y < -0.1f)
             {
                 Debug.Log("Vertical Divide");
                 CheckGroupDivision(_left);
                 CheckGroupDivision(_right);
             }
-            else
+            else if (_left.cross.y > 0.1f && _right.cross.y > 0.1f)
             {
                 Debug.Log("Vertical Compress");
+                ConnectAll();
+            }
+            else
+            {
+                Debug.Log("Not Divide");
                 ConnectAll();
             }
         }
@@ -87,17 +93,20 @@ public class Car : MonoBehaviour
     {
         if (_left.dot + _right.dot < 1.94f)
         {
-            if ((_left.cross + _right.cross).y > 0
-                || Vector3.Dot((_top.left.Dir + _top.right.Dir).normalized,
-                    (_bottom.left.Dir + _bottom.right.Dir).normalized) is > -1 and < 0)
+            if (_top.cross.y < -0.1f && _bottom.cross.y < -0.1f)
             {
                 Debug.Log("Horizontal Divide");
                 CheckGroupDivision(_top);
                 CheckGroupDivision(_bottom);
             }
-            else
+            else if (_top.cross.y > 0.1f && _bottom.cross.y > 0.1f)
             {
                 Debug.Log("Horizontal Compress");
+                ConnectAll();
+            }
+            else
+            {
+                Debug.Log("Not Divide");
                 ConnectAll();
             }
         }
@@ -121,17 +130,17 @@ public class Car : MonoBehaviour
         }
     }
 
+    private void Connect(Group group)
+    {
+        group.left.Connect(group.right.rigid);
+        group.right.Connect(group.left.rigid);
+    }
+
     private void ConnectAll()
     {
         Connect(_top);
         Connect(_bottom);
         Connect(_left);
         Connect(_right);
-    }
-
-    private void Connect(Group group)
-    {
-        group.left.Connect(group.right.rigid);
-        group.right.Connect(group.left.rigid);
     }
 }

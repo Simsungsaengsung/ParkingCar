@@ -3,13 +3,14 @@ using UnityEngine;
 public class CarWheel : MonoBehaviour
 {
     private Rigidbody _rigid;
+    private Car _car;
 
-    [SerializeField] private float _moveSpeed = 5f, _accel;
     private float _currentSpeed = 0;
 
     private void Awake()
     {
         _rigid = GetComponentInParent<Rigidbody>();
+        _car = GetComponentInParent<Car>();
     }
 
     private void FixedUpdate()
@@ -20,9 +21,9 @@ public class CarWheel : MonoBehaviour
 
     private void CalculateSpeed()
     {
-        _currentSpeed += Time.fixedDeltaTime * _accel;
-        if (_currentSpeed >= _moveSpeed)
-            _currentSpeed = _moveSpeed;
+        _currentSpeed += Time.fixedDeltaTime * _car.accel;
+        if (_currentSpeed >= _car.speed)
+            _currentSpeed = _car.speed;
     }
 
     private void OnDrawGizmos()
