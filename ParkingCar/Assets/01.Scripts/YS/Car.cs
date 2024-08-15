@@ -36,20 +36,26 @@ public class Car : MonoBehaviour
         
         _right.cross = Vector3.Cross(_right.left.Dir, _right.right.Dir);
         _right.dot = Vector3.Dot(_right.left.Dir, _right.right.Dir);
-
-        bool topLeft =     Vector3.Dot(_top.left.Dir, Vector3.up + Vector3.left) is > 0f and < 0.7071f;
-        bool topRight =    Vector3.Dot(_top.right.Dir, Vector3.up + Vector3.right) is > 0 and < 0.7071f;
-        bool bottomLeft =  Vector3.Dot(_bottom.left.Dir, Vector3.down + Vector3.left) is > 0 and < 0.7071f;
-        bool bottomRight = Vector3.Dot(_bottom.right.Dir, Vector3.down + Vector3.right) is > 0 and < 0.7071f;
+        
+        bool topLeft =     Vector3.Dot(_top.left.Dir, transform.forward + -transform.right) is > 1f and < 1.414213f;
+        bool topRight =    Vector3.Dot(_top.right.Dir, transform.forward + transform.right) is > 1f and < 1.414213f;
+        bool bottomLeft =  Vector3.Dot(_bottom.right.Dir, -transform.forward + -transform.right) is > 1f and < 1.414213f;
+        bool bottomRight = Vector3.Dot(_bottom.left.Dir, -transform.forward + transform.right) is > 1f and < 1.414213f;
         
         if (topLeft && topRight && bottomLeft && bottomRight)
         {
             // do nothing
-            Debug.Log("do nothing");
+            Debug.Log("4 Side Divided");
         }
         else
         {
-            CheckVerticalDivision();
+            Vector3 dir = _top.left.Dir + _top.right.Dir + _bottom.left.Dir + _bottom.right.Dir;
+            float verDot = Mathf.Min(Vector3.Dot(dir, Vector3.up), Vector3.Dot(dir, Vector3.down));
+            float horDot = Mathf.Min(Vector3.Dot(dir, Vector3.left), Vector3.Dot(dir, Vector3.right));
+            if (verDot > horDot)
+                CheckVerticalDivision();
+            else
+                CheckHorizontalDivision();
         }
     }
 
@@ -57,16 +63,17 @@ public class Car : MonoBehaviour
     {
         if (_top.dot + _bottom.dot < 1.94f)
         {
-            if ((_top.cross + _bottom.cross).y >= 0
+            if ((_top.cross + _bottom.cross).y > 0
                 || Vector3.Dot((_left.left.Dir + _left.right.Dir).normalized,
                     (_right.left.Dir + _right.right.Dir).normalized) is > -1 and < 0)
             {
+                Debug.Log("Vertical Divided");
                 CheckGroupDivision(_left);
                 CheckGroupDivision(_right);
             }
             else
             {
-                Debug.Log("compression");
+                Debug.Log("Vertical Compressed");
                 Connect(_top);
                 Connect(_bottom);
                 Connect(_left);
@@ -75,7 +82,11 @@ public class Car : MonoBehaviour
         }
         else
         {
-            CheckHorizontalDivision();
+            Debug.Log("Not Divided");
+            Connect(_top);
+            Connect(_bottom);
+            Connect(_left);
+            Connect(_right);
         }
     }
 
@@ -83,17 +94,17 @@ public class Car : MonoBehaviour
     {
         if (_left.dot + _right.dot < 1.94f)
         {
-            if ((_left.cross + _right.cross).y >= 0
+            if ((_left.cross + _right.cross).y > 0
                 || Vector3.Dot((_top.left.Dir + _top.right.Dir).normalized,
                     (_bottom.left.Dir + _bottom.right.Dir).normalized) is > -1 and < 0)
             {
-                Debug.Log("horizontal divided");
+                Debug.Log("Horizontal Divided");
                 CheckGroupDivision(_top);
                 CheckGroupDivision(_bottom);
             }
             else
             {
-                Debug.Log("compression");
+                Debug.Log("Horizontal Compressed");
                 Connect(_top);
                 Connect(_bottom);
                 Connect(_left);
@@ -102,6 +113,7 @@ public class Car : MonoBehaviour
         }
         else
         {
+            Debug.Log("Not Divided");
             Connect(_top);
             Connect(_bottom);
             Connect(_left);
