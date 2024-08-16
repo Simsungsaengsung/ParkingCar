@@ -1,4 +1,5 @@
 using System;
+using Cinemachine.Utility;
 using UnityEngine;
 
 [Serializable]
@@ -51,17 +52,21 @@ public class Car : MonoBehaviour
         }
         else
         {
-            Vector3 dir = _top.left.Dir + _top.right.Dir + _bottom.left.Dir + _bottom.right.Dir;
-            float verDot = Mathf.Max(Vector3.Dot(dir, transform.forward), Vector3.Dot(dir, -transform.forward));
-            float horDot = Mathf.Max(Vector3.Dot(dir, -transform.right), Vector3.Dot(dir, transform.right));
-            if (verDot > horDot)
+            Vector3 dir = _top.left.Dir.Abs() + _top.right.Dir.Abs() + _bottom.left.Dir.Abs() + _bottom.right.Dir.Abs();
+
+            if (dir.x < dir.z)
                 CheckVerticalDivision();
-            else
+            else if (dir.x > dir.z)
                 CheckHorizontalDivision();
+            else if (Equals(dir.x, dir.z))
+            {
+                if (CheckVerticalDivision() == false)
+                    CheckHorizontalDivision();
+            }
         }
     }
 
-    private void CheckVerticalDivision()
+    private bool CheckVerticalDivision()
     {
         if (_top.dot + _bottom.dot < 1.94f)
         {
@@ -78,18 +83,20 @@ public class Car : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not Divide");
+                Debug.Log("Not Divide 1");
                 ConnectAll();
+                return false;
             }
+
+            return true;
         }
-        else
-        {
-            Debug.Log("Not Divide");
-            ConnectAll();
-        }
+        
+        Debug.Log("Not Divide 2");
+        ConnectAll();
+        return false;
     }
 
-    private void CheckHorizontalDivision()
+    private bool CheckHorizontalDivision()
     {
         if (_left.dot + _right.dot < 1.94f)
         {
@@ -108,13 +115,15 @@ public class Car : MonoBehaviour
             {
                 Debug.Log("Not Divide");
                 ConnectAll();
+                return false;
             }
+
+            return true;
         }
-        else
-        {
-            Debug.Log("Not Divide");
-            ConnectAll();
-        }
+        
+        Debug.Log("Not Divide");
+        ConnectAll();
+        return false;
     }
     
     private void CheckGroupDivision(Group group)
