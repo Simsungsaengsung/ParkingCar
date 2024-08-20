@@ -20,7 +20,16 @@ public class Stage : MonoBehaviour
         {
             _stageBtns[i].RegisterCallback<ClickEvent, int>(HandleStageButtonClicked, i);
             var label = _stageBtns[i].Q<Label>();
-            
+            int check = StageManager.Instance.StageCheck(i + 1);
+            if (check == -1)
+            {
+                label.AddToClassList("lock");
+            }
+            else if (check == 1)
+            {
+                label.text = "클리어!";
+                label.AddToClassList("clear");
+            }
         }
     }
 

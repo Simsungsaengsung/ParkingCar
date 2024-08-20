@@ -88,6 +88,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
 
     public int StageCheck(int idx)
     {
+        Debug.Log(_stageSaveDatas.Count);
         if (_stageSaveDatas[idx].isClear)
             return 1;
         
@@ -109,6 +110,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
     public void LoadData(GameData gameData)
     {
         _stageSaveDatas = gameData.stageSaveDatas;
+        Debug.Log(_stageSaveDatas == null);
         if (_stageSaveDatas.Count != _stageObjDictionary.Count)
         {
             foreach (var stageIdx in _stageObjDictionary)
