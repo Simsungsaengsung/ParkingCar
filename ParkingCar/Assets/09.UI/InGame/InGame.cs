@@ -1,12 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class InGame : MonoBehaviour
 {
     private UIDocument _uiDocument;
     private VisualElement _pausePanel, _stageClearPanel;
-
-    [SerializeField] private Option _option;
 
     private void Awake()
     {
@@ -16,23 +15,29 @@ public class InGame : MonoBehaviour
     public void OnEnable()
     {
         var root = _uiDocument.rootVisualElement;
-        var pauseBTN = root.Q<Button>("PauseButton");
-        pauseBTN.clicked += HandlePauseButtonClicked;
+        var pauseBtn = root.Q<Button>("PauseButton");
+        pauseBtn.clicked += HandlePauseButtonClicked;
 
-        var optionBTN = root.Q<Button>("OptionButton");
-        optionBTN.clicked += OnOptionButtonClicked;
+        var optionBtn = root.Q<Button>("OptionButton");
+        optionBtn.clicked += OnOptionButtonClicked;
 
-        var parkingBTN = root.Q<Button>("ParkingButton");
+        var parkingBtn = root.Q<Button>("ParkingButton");
+        parkingBtn.clicked += HandleParkingButtonClicked;
 
-        var pausePanel = root.Q("PausePanel");
-        pausePanel.Q<Button>("ContinueButton").clicked += HandleContinueButtonClicked;
-        pausePanel.Q<Button>("ExitButton").clicked += HandleExitButtonClicked;
-        pausePanel.Q<Button>("QuitButton").clicked += HandleQuitButtonClicked;
+        _pausePanel = root.Q("PausePanel");
+        _pausePanel.Q<Button>("ContinueButton").clicked += HandleContinueButtonClicked;
+        _pausePanel.Q<Button>("ExitButton").clicked += HandleExitButtonClicked;
+        _pausePanel.Q<Button>("QuitButton").clicked += HandleQuitButtonClicked;
 
-        var stageClearPanel = root.Q("StageClearPanel");
-        stageClearPanel.Q<Button>("NextButton").clicked += HandleNextButtonClicked;
-        stageClearPanel.Q<Button>("RetryButton").clicked += HandleNextButtonClicked;
-        stageClearPanel.Q<Button>("ExitButton").clicked += HandleNextButtonClicked;
+        _stageClearPanel = root.Q("StageClearPanel");
+        _stageClearPanel.Q<Button>("NextButton").clicked += HandleNextButtonClicked;
+        _stageClearPanel.Q<Button>("RetryButton").clicked += HandleNextButtonClicked;
+        _stageClearPanel.Q<Button>("ExitButton").clicked += HandleNextButtonClicked;
+    }
+
+    private void HandleParkingButtonClicked()
+    {
+        EventManager.BroadCast(Events.StartParkingEvent);
     }
 
     private void OnOptionButtonClicked()
@@ -56,7 +61,12 @@ public class InGame : MonoBehaviour
     
     private void HandleExitButtonClicked()
     {
-        Debug.Log("To The Title");
+        Events.SceneChangeEvent.callBack = () =>
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene("YS_Stage");
+        };
+        EventManager.BroadCast(Events.SceneChangeEvent);
     }
     
     private void HandleQuitButtonClicked()
