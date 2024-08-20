@@ -86,6 +86,17 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
         SaveManager.Instance.SaveData();
     }
 
+    public int StageCheck(int idx)
+    {
+        if (_stageSaveDatas[idx].isClear)
+            return 1;
+        
+        if (_stageSaveDatas[idx].isUnlock)
+            return 0;
+        
+        return -1;
+    }
+
     private int GetNextStageIdx()
     {
         int index = _currentStageIdx + 1;
