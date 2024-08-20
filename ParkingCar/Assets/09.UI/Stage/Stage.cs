@@ -19,11 +19,14 @@ public class Stage : MonoBehaviour
         for (int i = 0; i < _stageBtns.Count; i++)
         {
             _stageBtns[i].RegisterCallback<ClickEvent, int>(HandleStageButtonClicked, i);
+            var label = _stageBtns[i].Q<Label>();
+            
         }
     }
 
     private void HandleStageButtonClicked(ClickEvent evt, int idx)
     {
-        StageManager.Instance.OpenStage(idx + 1);
+        Events.SceneChangeEvent.callBack = () => StageManager.Instance.OpenStage(idx + 1);
+        EventManager.BroadCast(Events.SceneChangeEvent);
     }
 }

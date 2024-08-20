@@ -76,7 +76,6 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
 
     public void StageClear()
     {
-        UIManager_inhae.Instance.GameClear();
         _stageSaveDatas[_currentStageIdx].isClear = true;
         
         int nextIdx = GetNextStageIdx();
