@@ -321,9 +321,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1724314339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1724314341}
+  - component: {fileID: 1724314340}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1724314340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724314339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fbf06cf0a12814eb404aa8ad819a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stages:
+  - stageIndex: 11
+    stageObj: {fileID: 4652701477292656864, guid: f2e3874398f777a4185df9255044f302,
+      type: 3}
+  - stageIndex: 12
+    stageObj: {fileID: 4652701477292656864, guid: a170e24f98ac3b0449c0ed5d4a38cb50,
+      type: 3}
+  - stageIndex: 13
+    stageObj: {fileID: 4652701477292656864, guid: c4d0892ee8666c74e8f9c1ab8ee1624e,
+      type: 3}
+  - stageIndex: 21
+    stageObj: {fileID: 4652701477292656864, guid: 3c181d32835d8264a941b9ac87f6f7c3,
+      type: 3}
+  - stageIndex: 22
+    stageObj: {fileID: 4652701477292656864, guid: ebe75f96f00b5eb499c06edd3e934ef1,
+      type: 3}
+  - stageIndex: 23
+    stageObj: {fileID: 4652701477292656864, guid: aa8375d1e017ff543a79277b770f37d6,
+      type: 3}
+--- !u!4 &1724314341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724314339}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1720858654}
   - {fileID: 451720871}
+  - {fileID: 1724314341}

@@ -24,6 +24,6 @@ public class Stage : MonoBehaviour
 
     private void HandleStageButtonClicked(ClickEvent evt, int idx)
     {
-        
+        StageManager.Instance.OpenStage(idx + 1);
     }
 }
