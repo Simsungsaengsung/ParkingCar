@@ -79,18 +79,21 @@ public class Option : MonoBehaviour
     {
         _fadePanel.pickingMode = PickingMode.Position;
         _fadePanel.AddToClassList("out");
-        StartCoroutine(DelayCallback(1, () => evt.callBack?.Invoke()));
+        StartCoroutine(DelayCallback(1, evt.callBack));
     }
 
     private IEnumerator DelayCallback(float delay, Action callback)
     {
-        yield return new WaitForSeconds(delay);
-        callback.Invoke();
+        yield return new WaitForSecondsRealtime(delay);
+        callback?.Invoke();
     }
 
     private void HandleSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         if (_fadePanel != null && _fadePanel.ClassListContains("out"))
+        {
+            _fadePanel.pickingMode = PickingMode.Ignore;
             _fadePanel.RemoveFromClassList("out");
+        }
     }
 }

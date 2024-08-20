@@ -28,7 +28,6 @@ public class StartSceneUI : MonoBehaviour
 
     private void HandleStartButtonClicked()
     {
-        Debug.Log("시작");
         Events.SceneChangeEvent.callBack = () => SceneManager.LoadScene("YS_Stage");
         EventManager.BroadCast(Events.SceneChangeEvent);
     }
