@@ -16,6 +16,6 @@ public class GameData
         
         StageSaveData firstStageData = new StageSaveData();
         firstStageData.isUnlock = true;
-        stageSaveDatas.Add(11, firstStageData);
+        stageSaveDatas.Add(1, firstStageData);
     }
 }
