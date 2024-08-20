@@ -1,0 +1,33 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/09.UI/InGame.uss?fileID=7433441132597879392&amp;guid=70df00768649859479d0e3826a76076e&amp;type=3#InGame" />
+    <ui:VisualElement style="flex-grow: 1; align-items: center;">
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="PauseButton" style="position: absolute; left: 10px; top: 10px; width: 100px; height: 100px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; flex-basis: 0;" />
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionButton" style="position: absolute; top: 10px; width: 100px; height: 100px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; right: 10px; flex-basis: 0;" />
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ParkingButton" style="position: absolute; width: 200px; height: 200px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; right: 10px; bottom: 10px; flex-basis: 0;" />
+        <ui:VisualElement name="PausePanel" style="background-color: rgba(0, 0, 0, 0.5); width: 100%; height: 100%; justify-content: center; align-items: center; flex-shrink: 0; position: absolute;">
+            <ui:Button text="계속하기" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ContinueButton" class="resume-panel-button">
+                <ui:VisualElement style="width: 110px; background-color: rgb(0, 0, 0); left: 10px; height: 110px;" />
+            </ui:Button>
+            <ui:Button text="나가기" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="resume-panel-button">
+                <ui:VisualElement style="width: 110px; background-color: rgb(0, 0, 0); left: 10px; height: 110px;" />
+            </ui:Button>
+            <ui:Button text="게임 종료" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" class="resume-panel-button">
+                <ui:VisualElement style="width: 110px; background-color: rgb(0, 0, 0); left: 10px; height: 110px;" />
+            </ui:Button>
+        </ui:VisualElement>
+        <ui:VisualElement name="StageClearPanel" style="background-color: rgba(0, 0, 0, 0.5); width: 100%; height: 100%; justify-content: center; align-items: center; flex-shrink: 0; position: absolute;">
+            <ui:VisualElement style="flex-grow: 1; position: absolute; right: 40px; bottom: 0;">
+                <ui:Button text="다음 스테이지" parse-escape-sequences="true" display-tooltip-when-elided="true" name="NextButton" class="resume-panel-button">
+                    <ui:VisualElement style="width: 110px; background-color: rgb(0, 0, 0); left: 10px; height: 110px;" />
+                </ui:Button>
+                <ui:Button text="다시하기" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RetryButton" class="resume-panel-button">
+                    <ui:VisualElement style="width: 110px; background-color: rgb(0, 0, 0); left: 10px; height: 110px;" />
+                </ui:Button>
+                <ui:Button text="나가기" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="resume-panel-button">
+                    <ui:VisualElement style="width: 110px; background-color: rgb(0, 0, 0); left: 10px; height: 110px;" />
+                </ui:Button>
+            </ui:VisualElement>
+            <ui:Label tabindex="-1" text="Stage Clear" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; font-size: 150px; color: rgb(255, 255, 255); -unity-font: url(&quot;project://database/Assets/10.Fonts/EliceDigitalBaeum_Bold.ttf?fileID=12800000&amp;guid=52c8c4bd13c2de54289d6473c1162c85&amp;type=3#EliceDigitalBaeum_Bold&quot;); -unity-font-definition: url(&quot;project://database/Assets/10.Fonts/EliceDigitalBaeum_Bold%20SDF.asset?fileID=11400000&amp;guid=d0a9d4c570e010248ae93589a0092d9d&amp;type=2#EliceDigitalBaeum_Bold SDF&quot;); top: 100px; position: absolute;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

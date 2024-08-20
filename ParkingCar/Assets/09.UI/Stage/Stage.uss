@@ -1,0 +1,39 @@
+.stage-button {
+    width: 200px;
+    height: 200px;
+    -unity-font: url("project://database/Assets/10.Fonts/EliceDigitalBaeum_Bold.ttf?fileID=12800000&guid=52c8c4bd13c2de54289d6473c1162c85&type=3#EliceDigitalBaeum_Bold");
+    -unity-font-definition: url("project://database/Assets/10.Fonts/EliceDigitalBaeum_Bold%20SDF.asset?fileID=11400000&guid=d0a9d4c570e010248ae93589a0092d9d&type=2#EliceDigitalBaeum_Bold SDF");
+    font-size: 150px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    translate: 0 0;
+    margin-right: 75px;
+    margin-left: 75px;
+}
+
+.stage-button-lock {
+    transition-timing-function: ease-in-out-elastic;
+    transition-property: translate;
+    transition-duration: 1s;
+    translate: 11px 0;
+    transform-origin: 80%;
+}
+
+.clear {
+    color: rgb(255, 212, 0);
+    font-size: 50px;
+    -unity-text-outline-width: 2px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    width: 180px;
+    height: 180px;
+}
+
+.lock {
+    flex-grow: 1;
+    background-image: url("project://database/Assets/07.Materials/YS/Square.png?fileID=21300000&guid=65121323863831d47806f21e30203658&type=3#Square");
+    color: rgba(0, 0, 0, 0);
+}

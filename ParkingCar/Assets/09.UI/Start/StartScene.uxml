@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/09.UI/StartScene.uss?fileID=7433441132597879392&amp;guid=ded68e66d286bbb4f843447b6bdbf159&amp;type=3#StartScene" />
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="VisualElement" style="height: 50%;">
+            <ui:VisualElement name="TextPanel" style="height: 60%; flex-direction: row; align-items: flex-end; position: absolute; top: 300px; right: 50px;">
+                <ui:Label tabindex="-1" text="&apos;치&apos;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleLabel" class="label" style="color: rgb(255, 224, 81); font-size: 250px; rotate: -14deg;" />
+                <ui:Label tabindex="-1" text="입니다." parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleLabel" class="label" style="color: rgb(0, 0, 0); font-size: 125px; -unity-text-outline-color: rgb(255, 255, 255);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="VisualElement" style="height: 50%;">
+            <ui:Button text="시작하기" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" enable-rich-text="true" class="button label" />
+            <ui:Button text="설정" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionButton" enable-rich-text="true" class="button label" />
+            <ui:Button text="게임 종료" parse-escape-sequences="true" display-tooltip-when-elided="true" name="QuitButton" enable-rich-text="true" class="button label" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

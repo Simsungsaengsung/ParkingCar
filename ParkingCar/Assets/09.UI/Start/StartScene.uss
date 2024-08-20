@@ -1,0 +1,25 @@
+.button {
+    background-color: rgba(0, 0, 0, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    padding-left: 100px;
+    transition-duration: 0.5s;
+    padding-top: 30px;
+}
+
+.label {
+    -unity-font: url("project://database/Assets/10.Fonts/WavvePADO-Regular.ttf?fileID=12800000&guid=e4864f5078631984caf5906db056c09a&type=3#WavvePADO-Regular");
+    -unity-font-definition: url("project://database/Assets/10.Fonts/WavvePADO-Regular%20SDF.asset?fileID=11400000&guid=88c727aacfcc4314f910b556aeceed92&type=2#WavvePADO-Regular SDF");
+    -unity-font-style: bold;
+    -unity-text-align: upper-left;
+    font-size: 100px;
+    color: rgb(255, 255, 255);
+    -unity-text-outline-width: 5px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+}
+
+.button:hover {
+    translate: 50px 0;
+}
