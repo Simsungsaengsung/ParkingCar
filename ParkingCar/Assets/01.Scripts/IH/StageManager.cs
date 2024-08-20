@@ -23,7 +23,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
     {
         DontDestroyOnLoad(gameObject);
         base.Awake();
-        _currentStageIdx = 11;
+        _currentStageIdx = 1;
         _stages.ForEach(x=> _stageObjDictionary.Add(x.stageIndex, x.stageObj));
     }
 
@@ -91,12 +91,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
     {
         int index = _currentStageIdx + 1;
         if (!_stageObjDictionary.ContainsKey(index))
-        {
-            int chapterIdx = index / 10 + 1;
-            int stageIdx = 1;
-
-            index = chapterIdx * 10 + stageIdx;
-        }
+            return _currentStageIdx;
         
         return index;
     }
