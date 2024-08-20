@@ -1,22 +1,22 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/09.UI/StartScene.uss?fileID=7433441132597879392&amp;guid=ded68e66d286bbb4f843447b6bdbf159&amp;type=3#StartScene" />
-    <Style src="project://database/Assets/09.UI/Stage.uss?fileID=7433441132597879392&amp;guid=580d1ed396ef47c468531d185c515d32&amp;type=3#Stage" />
+    <Style src="project://database/Assets/09.UI/Start/StartScene.uss?fileID=7433441132597879392&amp;guid=ded68e66d286bbb4f843447b6bdbf159&amp;type=3#StartScene" />
+    <Style src="project://database/Assets/09.UI/Stage/Stage.uss?fileID=7433441132597879392&amp;guid=580d1ed396ef47c468531d185c515d32&amp;type=3#Stage" />
     <ui:VisualElement name="VisualElement" style="flex-grow: 1;">
         <ui:VisualElement name="StageButtonPanel" style="flex-grow: 0; height: 500px; top: 300px; justify-content: center; align-items: center;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; position: relative; align-items: center;">
-                <ui:Button text="1" parse-escape-sequences="true" display-tooltip-when-elided="true" class="stage-button" style="justify-content: center;">
+                <ui:Button text="1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button" style="justify-content: center;">
                     <ui:Label tabindex="-1" text="클리어!" parse-escape-sequences="true" display-tooltip-when-elided="true" class="clear" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                 </ui:Button>
-                <ui:Button text="2" parse-escape-sequences="true" display-tooltip-when-elided="true" class="stage-button" />
+                <ui:Button text="2" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button" />
             </ui:VisualElement>
             <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; justify-content: center; align-items: center;">
-                <ui:Button text="4" parse-escape-sequences="true" display-tooltip-when-elided="true" class="stage-button" style="justify-content: center;">
+                <ui:Button text="4" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button" style="justify-content: center;">
                     <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" class="lock" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                 </ui:Button>
-                <ui:Button text="5" parse-escape-sequences="true" display-tooltip-when-elided="true" class="stage-button">
+                <ui:Button text="5" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
                     <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" class="lock" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                 </ui:Button>
-                <ui:Button text="3" parse-escape-sequences="true" display-tooltip-when-elided="true" class="stage-button">
+                <ui:Button text="3" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
                     <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" class="lock" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                 </ui:Button>
             </ui:VisualElement>
