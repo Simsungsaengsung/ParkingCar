@@ -9,10 +9,11 @@ public class CarPart : MonoBehaviour
 
     public Vector3 Dir => _wheel.transform.forward;
 
-    private void Awake()
+    public void SetUp()
     {
         rigid = GetComponent<Rigidbody>();
         _wheel = GetComponentInChildren<CarWheel>();
+        _wheel.SetUp();
     }
 
     public void Connect(Rigidbody other)

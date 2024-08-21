@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class Option : MonoBehaviour
+public class Option : MonoBehaviour, ISaveAble
 {
     private Slider _sfxVolSlider, _bgmVolSlider;
     private VisualElement _sfxDragger, _bgmDragger;
     private VisualElement _sfxBar, _bgmBar;
+    private float _sfx, _bgm;
     
     private VisualElement _optionPanel;
     private Button _xButton;
@@ -95,5 +96,15 @@ public class Option : MonoBehaviour
             _fadePanel.pickingMode = PickingMode.Ignore;
             _fadePanel.RemoveFromClassList("out");
         }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        
     }
 }
