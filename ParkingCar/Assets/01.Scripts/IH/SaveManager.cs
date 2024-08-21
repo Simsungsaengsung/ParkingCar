@@ -10,6 +10,7 @@ public class SaveManager : MonoSingleton<SaveManager>
     private string _directoryPath;
     
     [SerializeField] private GameData _gameData;
+    public GameData GameData => _gameData;
     private List<ISaveAble> _saveAbleObjs;
 
     public override void Awake()
@@ -30,21 +31,29 @@ public class SaveManager : MonoSingleton<SaveManager>
         Save(_gameData);
     }
         
-    // 초기화. 가져와서 없으면 만들기
-    private void Init()
+    public void Init()
     {
         _saveAbleObjs = FindAllSaveObjects();
+        
+        if (_gameData.stageSaveDatas.Count != 0)
+        {
+            Debug.Log("null");
+            return;
+        }
         
         _gameData = Load();
         if (_gameData == null)
             _gameData = new GameData();
-        
+    }
+
+    private void LoadData()
+    {
         foreach (ISaveAble manager in _saveAbleObjs)
         {
             manager.LoadData(_gameData);
         }
     }
-
+    
     private List<ISaveAble> FindAllSaveObjects()
     {
         return FindObjectsOfType<MonoBehaviour>(true).OfType<ISaveAble>().ToList();
@@ -75,8 +84,9 @@ public class SaveManager : MonoSingleton<SaveManager>
         
     }
 
-    private GameData Load()
+    public GameData Load()
     {
+        _directoryPath = Application.persistentDataPath;
         string fullPath = Path.Combine(_directoryPath, _fileName);
         GameData loadedData = null;
 

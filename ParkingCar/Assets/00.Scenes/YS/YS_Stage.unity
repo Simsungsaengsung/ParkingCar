@@ -406,10 +406,8 @@ MonoBehaviour:
       TempValue:
         isClear: 0
         isUnlock: 0
-      SerializedKeys: 01000000
-      SerializedValues:
-      - isClear: 0
-        isUnlock: 1
+      SerializedKeys: 
+      SerializedValues: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
