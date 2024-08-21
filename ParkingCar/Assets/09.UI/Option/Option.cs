@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -9,7 +10,7 @@ public class Option : MonoBehaviour, ISaveAble
     private Slider _sfxVolSlider, _bgmVolSlider;
     private VisualElement _sfxDragger, _bgmDragger;
     private VisualElement _sfxBar, _bgmBar;
-    private float _sfx, _bgm;
+    private float _sfxValue, _bgmValue;
     
     private VisualElement _optionPanel;
     private Button _xButton;
@@ -18,6 +19,8 @@ public class Option : MonoBehaviour, ISaveAble
     private VisualElement _root;
     private VisualElement _fadePanel;
 
+    [SerializeField] private AudioMixer _audioMixer;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -25,7 +28,7 @@ public class Option : MonoBehaviour, ISaveAble
         SceneManager.sceneLoaded += HandleSceneLoaded;
     }
 
-    public void OnEnable()
+    private void OnEnable()
     {
         EventManager.AddListener<OptionButtonClickEvent>(Open);
         EventManager.AddListener<SceneChangeEvent>(FadeOut);
@@ -36,24 +39,44 @@ public class Option : MonoBehaviour, ISaveAble
         _xButton.clicked += HandleXButtonClicked;
         
         _sfxVolSlider = _root.Q<Slider>("SFXSlider");
+        _sfxVolSlider.RegisterCallback<ChangeEvent<float>>(HandleSFXChangeEvent);
         _sfxDragger = _sfxVolSlider.Q("unity-dragger");
         _sfxBar = new VisualElement();
         _sfxBar.AddToClassList("bar");
         _sfxDragger.Add(_sfxBar);
         
         _bgmVolSlider = _root.Q<Slider>("BGMSlider");
+        _bgmVolSlider.RegisterCallback<ChangeEvent<float>>(HandleBGMChangeEvent);
         _bgmDragger = _bgmVolSlider.Q("unity-dragger");
         _bgmBar = new VisualElement();
         _bgmBar.AddToClassList("bar");
         _bgmDragger.Add(_bgmBar);
 
         _fadePanel = _root.Q("FadePanel");
+        SaveManager.Instance.Init();
+        LoadData(SaveManager.Instance.Load());
+    }
+
+    private void HandleBGMChangeEvent(ChangeEvent<float> evt)
+    {
+        _sfxValue = evt.newValue;
+        var volume = _sfxValue == 0 ? 0 : Mathf.Log10(_sfxValue) * 20;
+        _audioMixer.SetFloat("BGM", volume);
+    }
+
+    private void HandleSFXChangeEvent(ChangeEvent<float> evt)
+    {
+        _bgmValue = evt.newValue;
+        var volume = _bgmValue == 0 ? 0 : Mathf.Log10(_bgmValue) * 20;
+        _audioMixer.SetFloat("SFX", volume);
     }
 
     private void OnDisable()
     {
         EventManager.RemoveListener<OptionButtonClickEvent>(Open);
         EventManager.RemoveListener<SceneChangeEvent>(FadeOut);
+        SaveManager.Instance.SaveData();
+        Debug.Log("로그를 찍어보자");
     }
 
     private void HandleXButtonClicked()
@@ -100,11 +123,15 @@ public class Option : MonoBehaviour, ISaveAble
 
     public void LoadData(GameData gameData)
     {
-        
+        Debug.Log(gameData.sfxValue);
+        Debug.Log(gameData.bgmValue);
+        _sfxVolSlider.value = gameData.sfxValue;
+        _bgmVolSlider.value = gameData.bgmValue;
     }
 
     public void SaveData(ref GameData gameData)
     {
-        
+        gameData.sfxValue = _sfxValue;
+        gameData.bgmValue = _bgmValue;
     }
 }

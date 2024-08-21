@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9989d559f6d24dc3b848acbecd54d0b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24100000, guid: 093de26bbd633e541b8e8e5a4d88e0f6, type: 2}
 --- !u!114 &64974555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,63 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &208115241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208115243}
+  - component: {fileID: 208115242}
+  m_Layer: 0
+  m_Name: SvaeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &208115242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208115241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b873f0a417f402448b6aac1223c5096a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fileName: Save.dat
+  _gameData:
+    sfxValue: 1
+    bgmValue: 1
+    stageSaveDatas:
+      TempKey: 0
+      TempValue:
+        isClear: 0
+        isUnlock: 0
+      SerializedKeys: 01000000
+      SerializedValues:
+      - isClear: 0
+        isUnlock: 1
+--- !u!4 &208115243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208115241}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.6084194, y: 1.608526, z: 4.3155117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -390,3 +448,4 @@ SceneRoots:
   - {fileID: 1720858654}
   - {fileID: 451720871}
   - {fileID: 64974556}
+  - {fileID: 208115243}
