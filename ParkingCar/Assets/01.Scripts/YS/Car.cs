@@ -22,12 +22,18 @@ public class Car : MonoBehaviour
     [SerializeField] private Group _left;
     [SerializeField] private Group _right;
 
+    private bool _topLeft, _topRight, _bottomLeft, _bottomRight;
+
     private void Awake()
     {
-        CheckDivision();
+        _top.left.SetUp();
+        _top.right.SetUp();
+        _bottom.left.SetUp();
+        _bottom.right.SetUp();
+        EventManager.AddListener<StartParkingEvent>(HandleStartParking);
     }
 
-    private void CheckDivision()
+    private void HandleStartParking(StartParkingEvent evt)
     {
         _top.cross = Vector3.Cross(_top.left.Dir, _top.right.Dir);
         _top.dot = Vector3.Dot(_top.left.Dir, _top.right.Dir);
@@ -41,24 +47,40 @@ public class Car : MonoBehaviour
         _right.cross = Vector3.Cross(_right.left.Dir, _right.right.Dir);
         _right.dot = Vector3.Dot(_right.left.Dir, _right.right.Dir);
         
-        bool topLeft =     Vector3.Dot(_top.left.Dir, transform.forward + -transform.right) is > 1f and < 1.414214f;
-        bool topRight =    Vector3.Dot(_top.right.Dir, transform.forward + transform.right) is > 1f and < 1.414214f;
-        bool bottomLeft =  Vector3.Dot(_bottom.right.Dir, -transform.forward + -transform.right) is > 1f and < 1.414214f;
-        bool bottomRight = Vector3.Dot(_bottom.left.Dir, -transform.forward + transform.right) is > 1f and < 1.414214f;
+        _topLeft =     Vector3.Dot(_top.left.Dir, transform.forward + -transform.right) is > 1f and < 1.414214f;
+        _topRight =    Vector3.Dot(_top.right.Dir, transform.forward + transform.right) is > 1f and < 1.414214f;
+        _bottomLeft =  Vector3.Dot(_bottom.right.Dir, -transform.forward + -transform.right) is > 1f and < 1.414214f;
+        _bottomRight = Vector3.Dot(_bottom.left.Dir, -transform.forward + transform.right) is > 1f and < 1.414214f;
         
-        if (topLeft && topRight && bottomLeft && bottomRight)
+        CheckDivision();
+    }
+
+    private void CheckDivision()
+    {
+        if (_topLeft && _topRight && _bottomLeft && _bottomRight)
         {
             Debug.Log("4 Side Divide");
         }
         else
         {
-            Vector3 dir = _top.left.Dir.Abs() + _top.right.Dir.Abs() + _bottom.left.Dir.Abs() + _bottom.right.Dir.Abs();
+            Vector3 dir = _top.left.Dir + _top.right.Dir + _bottom.left.Dir + _bottom.right.Dir;
+            Vector3 absDir = new Vector3(Mathf.Abs(dir.x), 0, Mathf.Abs(dir.z));
 
-            if (dir.x < dir.z)
-                CheckVerticalDivision();
-            else if (dir.x > dir.z)
-                CheckHorizontalDivision();
-            else if (Equals(dir.x, dir.z))
+            if (absDir.x < absDir.z)
+            {
+                if (dir.z > 0)
+                    CheckVerticalDivision();
+                else
+                    CheckVerticalDivision();
+            }
+            else if (absDir.x > absDir.z)
+            {
+                if (dir.x > 0)
+                    CheckHorizontalDivision();
+                else
+                    CheckHorizontalDivision();
+            }
+            else if (Equals(absDir.x, absDir.z))
             {
                 if (CheckVerticalDivision() == false)
                     CheckHorizontalDivision();

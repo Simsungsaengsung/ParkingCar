@@ -12,7 +12,7 @@ public class Stage : MonoBehaviour
         _uiDocument = GetComponent<UIDocument>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
         var root = _uiDocument.rootVisualElement;
         _stageBtns = root.Query<Button>("StageButton").ToList();

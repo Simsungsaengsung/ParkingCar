@@ -8,7 +8,7 @@ public class CarWheel : MonoBehaviour
     private float _currentSpeed = 0;
     private bool _isStart;
 
-    private void Awake()
+    public void SetUp()
     {
         _rigid = GetComponentInParent<Rigidbody>();
         _car = GetComponentInParent<Car>();
@@ -29,14 +29,9 @@ public class CarWheel : MonoBehaviour
             _currentSpeed = _car.speed;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.forward * 2);
-    }
-
     private void HandleStartParking(StartParkingEvent evt)
     {
         _isStart = true;
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 }
