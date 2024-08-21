@@ -23,14 +23,16 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
     {
         DontDestroyOnLoad(gameObject);
         base.Awake();
-        _currentStageIdx = 1;
-        _stages.ForEach(x=> _stageObjDictionary.Add(x.stageIndex, x.stageObj));
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            _currentStageIdx = 1;
+            Debug.Log("Claer");
             StageClear();
+        }
     }
     
     private void HandleSceneLoaded(Scene arg0, LoadSceneMode arg1)
@@ -88,7 +90,13 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
 
     public int StageCheck(int idx)
     {
-        Debug.Log(_stageSaveDatas.Count);
+        if (!_stageSaveDatas.ContainsKey(idx))
+        {
+            SaveManager.Instance.Init();
+            LoadData(SaveManager.Instance.GameData);
+            Debug.Log("Load");
+        }
+        Debug.Log(_stageSaveDatas[1].isUnlock);
         if (_stageSaveDatas[idx].isClear)
             return 1;
         
@@ -109,8 +117,17 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
     
     public void LoadData(GameData gameData)
     {
+        if (_stages.Count == _stageObjDictionary.Count)
+            return;
+
+        _stages.ForEach(x=> _stageObjDictionary.Add(x.stageIndex, x.stageObj));
+
+        if(_stageSaveDatas.Count == _stages.Count)
+            return;
+        
+        Debug.Log(gameData.stageSaveDatas.Count);
         _stageSaveDatas = gameData.stageSaveDatas;
-        Debug.Log(_stageSaveDatas == null);
+        
         if (_stageSaveDatas.Count != _stageObjDictionary.Count)
         {
             foreach (var stageIdx in _stageObjDictionary)
@@ -123,6 +140,8 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
                 }
             }
         }
+        Debug.Log("Asdfadsfasdfasdf");
+        _stageSaveDatas[1].isUnlock = true;
     }
 
     public void SaveData(ref GameData gameData)
