@@ -1,5 +1,4 @@
 using System;
-using Cinemachine.Utility;
 using UnityEngine;
 
 [Serializable]
@@ -16,6 +15,7 @@ public class Car : MonoBehaviour
 {
     [field:SerializeField] public float speed { get; private set; }
     [field:SerializeField] public float accel { get; private set; }
+    [field:SerializeField] public float deAccel { get; private set; }
     
     [SerializeField] private Group _top;
     [SerializeField] private Group _bottom;

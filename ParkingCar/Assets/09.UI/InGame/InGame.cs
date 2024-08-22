@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -10,6 +11,7 @@ public class InGame : MonoBehaviour
     private void Awake()
     {
         _uiDocument = GetComponent<UIDocument>();
+        EventManager.AddListener<StageFinishEvent>(HandleStageFinishEvent);
     }
 
     public void OnEnable()
@@ -31,8 +33,8 @@ public class InGame : MonoBehaviour
 
         _stageClearPanel = root.Q("StageClearPanel");
         _stageClearPanel.Q<Button>("NextButton").clicked += HandleNextButtonClicked;
-        _stageClearPanel.Q<Button>("RetryButton").clicked += HandleNextButtonClicked;
-        _stageClearPanel.Q<Button>("ExitButton").clicked += HandleNextButtonClicked;
+        _stageClearPanel.Q<Button>("RetryButton").clicked += HandleRetryButtonClicked;
+        _stageClearPanel.Q<Button>("ExitButton").clicked += HandleExitButtonClicked;
     }
 
     private void HandleParkingButtonClicked()
@@ -76,6 +78,19 @@ public class InGame : MonoBehaviour
 
     private void HandleNextButtonClicked()
     {
-        
+        StageManager.Instance.NextStage();
+    }
+
+    private void HandleRetryButtonClicked()
+    {
+        StageManager.Instance.RetryStage();
+    }
+
+    private void HandleStageFinishEvent(StageFinishEvent evt)
+    {
+        if (evt.isClear)
+            _stageClearPanel.AddToClassList("open");
+        else
+            DOVirtual.DelayedCall(3, () => StageManager.Instance.RetryStage());
     }
 }

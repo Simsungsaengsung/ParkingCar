@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Clear");
             _gameClear = true;
             Time.timeScale = 0;
+            Events.StageClearEvent.isClear = true;
+            EventManager.BroadCast(Events.StageClearEvent);
         }
     }
 }

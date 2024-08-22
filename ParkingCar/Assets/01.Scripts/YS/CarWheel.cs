@@ -13,25 +13,39 @@ public class CarWheel : MonoBehaviour
         _rigid = GetComponentInParent<Rigidbody>();
         _car = GetComponentInParent<Car>();
         EventManager.AddListener<StartParkingEvent>(HandleStartParking);
+        EventManager.AddListener<CarExitsMapEvent>(HandleCarExitsMapEvent);
     }
 
     private void FixedUpdate()
     {
-        if (_isStart == false) return;
         CalculateSpeed();
         _rigid.velocity = transform.forward * _currentSpeed;
     }
 
     private void CalculateSpeed()
     {
-        _currentSpeed += Time.fixedDeltaTime * _car.accel;
-        if (_currentSpeed >= _car.speed)
-            _currentSpeed = _car.speed;
+        if (_isStart)
+        {
+            _currentSpeed += Time.fixedDeltaTime * _car.accel;
+            if (_currentSpeed > _car.speed)
+                _currentSpeed = _car.speed;
+        }
+        else
+        {
+            _currentSpeed -= Time.fixedDeltaTime * _car.accel;
+            if (_currentSpeed < 0)
+                _currentSpeed = 0;
+        }
     }
 
     private void HandleStartParking(StartParkingEvent evt)
     {
         _isStart = true;
         transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    private void HandleCarExitsMapEvent(CarExitsMapEvent evt)
+    {
+        _isStart = false;
     }
 }
