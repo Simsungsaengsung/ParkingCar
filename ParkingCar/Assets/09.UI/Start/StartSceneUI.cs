@@ -9,6 +9,7 @@ public class StartSceneUI : MonoBehaviour
 
     private void Awake()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.IntroBgm);
         _uiDocument = GetComponent<UIDocument>();
     }
 
@@ -18,12 +19,20 @@ public class StartSceneUI : MonoBehaviour
 
         _startBtn = root.Q<Button>("StartButton");
         _startBtn.clicked += HandleStartButtonClicked;
+        _startBtn.clicked += HandleSoundButtonClick;
 
         _optionBtn = root.Q<Button>("OptionButton");
         _optionBtn.clicked += HandleOptionButtonClicked;
+        _optionBtn.clicked += HandleSoundButtonClick;
 
         _quitBtn = root.Q<Button>("QuitButton");
         _quitBtn.clicked += HandleQuitButtonClicked;
+        _quitBtn.clicked += HandleSoundButtonClick;
+    }
+
+    private void HandleSoundButtonClick()
+    {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
     }
 
     private void HandleStartButtonClicked()

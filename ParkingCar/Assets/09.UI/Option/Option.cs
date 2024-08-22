@@ -54,7 +54,11 @@ public class Option : MonoBehaviour, ISaveAble
 
         _fadePanel = _root.Q("FadePanel");
         SaveManager.Instance.Init();
-        LoadData(SaveManager.Instance.Load());
+    }
+
+    private void Start()
+    {
+        LoadData(SaveManager.Instance.ReturnGameData());
     }
 
     private void HandleBGMChangeEvent(ChangeEvent<float> evt)
@@ -73,9 +77,9 @@ public class Option : MonoBehaviour, ISaveAble
 
     private void OnDisable()
     {
+        SaveManager.Instance.SaveData();
         EventManager.RemoveListener<OptionButtonClickEvent>(Open);
         EventManager.RemoveListener<SceneChangeEvent>(FadeOut);
-        SaveManager.Instance.SaveData();
         Debug.Log("로그를 찍어보자");
     }
 
@@ -123,10 +127,18 @@ public class Option : MonoBehaviour, ISaveAble
 
     public void LoadData(GameData gameData)
     {
-        Debug.Log(gameData.sfxValue);
         Debug.Log(gameData.bgmValue);
+        
         _sfxVolSlider.value = gameData.sfxValue;
+        _sfxValue = gameData.sfxValue;
+        var volume1 = _sfxValue == 0 ? 0 : Mathf.Log10(_sfxValue) * 20;
+        _audioMixer.SetFloat("SFX", volume1);
+        
         _bgmVolSlider.value = gameData.bgmValue;
+        _bgmValue = gameData.bgmValue;
+        var volume2 = _bgmValue == 0 ? 0 : Mathf.Log10(_bgmValue) * 20;
+        Debug.Log(volume2);
+        _audioMixer.SetFloat("BGM", volume2);
     }
 
     public void SaveData(ref GameData gameData)

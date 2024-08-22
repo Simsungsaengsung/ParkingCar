@@ -5,7 +5,12 @@ using Random = UnityEngine.Random;
 
 public enum Sound // 사운드 종류, 사운드 추가하고 싶으면 여기서 enum을 추가해야됨
 {
-    InGameBgm
+    InGameBgm,
+    IntroBgm,
+    ButtonClickSfx,
+    ClearBgm,
+    GameOverBgm,
+    StageSelectBgm,
 }
 
 public enum AudioType // 점프나 총 소리 같은 SFX인지 아님 BGM인지

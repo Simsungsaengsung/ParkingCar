@@ -13,6 +13,8 @@ public class SaveManager : MonoSingleton<SaveManager>
     public GameData GameData => _gameData;
     private List<ISaveAble> _saveAbleObjs;
 
+    private bool _isInit;
+
     public override void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -37,16 +39,19 @@ public class SaveManager : MonoSingleton<SaveManager>
         Debug.Log(_saveAbleObjs.Count);
         if (_gameData.stageSaveDatas.Count != 0)
         {
-            Debug.Log("null");
+            Debug.Log("Inited");
             return;
         }
         
+        Debug.Log("Init");
         _gameData = Load();
         if (_gameData == null)
             _gameData = new GameData();
     }
 
-    private void LoadData()
+    public GameData ReturnGameData() => _gameData;
+
+    public void LoadData()
     {
         foreach (ISaveAble manager in _saveAbleObjs)
         {
