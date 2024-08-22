@@ -15,7 +15,7 @@
                 <ui:Button text="3" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
                     <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                 </ui:Button>
-                <ui:Button text="4" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button" style="justify-content: center;">
+                <ui:Button text="4" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
                     <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                 </ui:Button>
                 <ui:Button text="5" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
@@ -24,6 +24,6 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" style="position: absolute; left: 10px; top: 10px; width: 100px; height: 100px;" />
-        <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionButton" style="position: absolute; top: 10px; width: 100px; height: 100px; right: 10px;" />
+        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionButton" style="position: absolute; top: 10px; width: 100px; height: 100px; right: 10px; background-color: rgba(0, 0, 0, 0); background-image: url(&quot;project://database/Assets/03.Assets/YS/40+%20Simple%20Icons%20-%20Free/Settings_Simple_Icons_UI.png?fileID=21300000&amp;guid=7e30b45d0fd13614e97a8cf6dbe6c2b1&amp;type=3#Settings_Simple_Icons_UI&quot;); -unity-background-image-tint-color: rgb(0, 0, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
     </ui:VisualElement>
 </ui:UXML>

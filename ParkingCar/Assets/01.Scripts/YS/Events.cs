@@ -5,6 +5,8 @@ public static class Events
     public static OptionButtonClickEvent OptionButtonClickEvent = new();
     public static SceneChangeEvent SceneChangeEvent = new();
     public static StartParkingEvent StartParkingEvent = new();
+    public static CarExitsMapEvent CarExitsMapEvent = new();
+    public static StageFinishEvent StageClearEvent = new();
 }
 
 public class OptionButtonClickEvent : GameEvent
@@ -21,4 +23,14 @@ public class SceneChangeEvent : GameEvent
 public class StartParkingEvent : GameEvent
 {
     
+}
+
+public class CarExitsMapEvent : GameEvent
+{
+    
+}
+
+public class StageFinishEvent : GameEvent
+{
+    public bool isClear;
 }

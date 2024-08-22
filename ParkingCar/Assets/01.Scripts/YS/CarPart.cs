@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CarPart : MonoBehaviour
@@ -20,5 +21,13 @@ public class CarPart : MonoBehaviour
     {
         _fixedJoint = gameObject.AddComponent<FixedJoint>();
         _fixedJoint.connectedBody = other;
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            
+        }
     }
 }
