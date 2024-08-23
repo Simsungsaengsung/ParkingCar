@@ -9,7 +9,7 @@ public enum Sound // 사운드 종류, 사운드 추가하고 싶으면 여기�
     IntroBgm,
     ButtonClickSfx,
     ClearSfx,
-    GameOverBgm,
+    GameOverSfx,
     StageSelectBgm,
 }
 
