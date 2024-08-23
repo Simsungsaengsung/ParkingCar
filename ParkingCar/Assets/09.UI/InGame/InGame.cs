@@ -102,7 +102,6 @@ public class InGame : MonoBehaviour
 
     private void HandleStageFinishEvent(StageFinishEvent evt)
     {
-        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         if (evt.isClear)
             _stageClearPanel.AddToClassList("open");
         else
