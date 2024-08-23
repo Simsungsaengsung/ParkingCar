@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             Events.StageClearEvent.isClear = true;
             EventManager.BroadCast(Events.StageClearEvent);
+            StageManager.Instance.StageClear();
         }
     }
 }

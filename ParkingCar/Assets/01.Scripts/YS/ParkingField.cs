@@ -22,6 +22,7 @@ public class ParkingField : MonoBehaviour
                 SoundManager.Instance.PlayWithBasePitch(Sound.GameOverSfx);
                 Events.StageClearEvent.isClear = false;
                 EventManager.BroadCast(Events.StageClearEvent);
+                return;
             }
         }
     }
