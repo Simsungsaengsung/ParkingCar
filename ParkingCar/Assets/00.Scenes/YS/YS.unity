@@ -504,6 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _successCountNeeded: 1
+  _lifeTime: 7
 --- !u!4 &1618241752
 Transform:
   m_ObjectHideFlags: 0
