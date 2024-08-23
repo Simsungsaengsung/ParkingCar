@@ -8,12 +8,13 @@ public struct StageIdxAndObj
 {
     public int stageIndex;
     public GameObject stageObj;
+    public int parkingCount;
 }
 public class StageManager : MonoSingleton<StageManager>, ISaveAble
 {
     [SerializeField] private List<StageIdxAndObj> _stages;
     
-    private Dictionary<int, GameObject> _stageObjDictionary = new ();
+    private Dictionary<int, StageIdxAndObj> _stageObjDictionary = new ();
     private Dictionary<int, StageSaveData> _stageSaveDatas = new Dictionary<int, StageSaveData>();
     public Dictionary<int, StageSaveData> StageSaveDatas => _stageSaveDatas;
 
@@ -38,7 +39,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
     private void HandleSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         Debug.Log(_currentStageIdx);
-        Instantiate(_stageObjDictionary[_currentStageIdx], Vector3.zero, Quaternion.identity);
+        Instantiate(_stageObjDictionary[_currentStageIdx].stageObj, Vector3.zero, Quaternion.identity);
         SceneManager.sceneLoaded -= HandleSceneLoaded;
     }
 
@@ -107,6 +108,8 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
         return -1;
     }
 
+    public int GetStageParkingCount(int idx) => _stageObjDictionary[idx].parkingCount;
+
     private int GetNextStageIdx()
     {
         int index = _currentStageIdx + 1;
@@ -121,7 +124,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
         if (_stages.Count == _stageObjDictionary.Count)
             return;
 
-        _stages.ForEach(x=> _stageObjDictionary.Add(x.stageIndex, x.stageObj));
+        _stages.ForEach(x=> _stageObjDictionary.Add(x.stageIndex, x));
 
         if(_stageSaveDatas.Count == _stages.Count)
             return;
