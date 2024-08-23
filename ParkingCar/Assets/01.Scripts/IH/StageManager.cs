@@ -38,7 +38,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
     
     private void HandleSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        Debug.Log(_currentStageIdx);
+        Debug.Log("Reload");
         Instantiate(_stageObjDictionary[_currentStageIdx].stageObj, Vector3.zero, Quaternion.identity);
         SceneManager.sceneLoaded -= HandleSceneLoaded;
     }
@@ -96,7 +96,6 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
         {
             SaveManager.Instance.Init();
             LoadData(SaveManager.Instance.GameData);
-            Debug.Log("Load");
         }
         Debug.Log(_stageSaveDatas[1].isUnlock);
         if (_stageSaveDatas[idx].isClear)
@@ -129,7 +128,6 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
         if(_stageSaveDatas.Count == _stages.Count)
             return;
         
-        Debug.Log(gameData.stageSaveDatas.Count);
         _stageSaveDatas = gameData.stageSaveDatas;
         
         if (_stageSaveDatas.Count != _stageObjDictionary.Count)
@@ -144,7 +142,6 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
                 }
             }
         }
-        Debug.Log("Asdfadsfasdfasdf");
         _stageSaveDatas[1].isUnlock = true;
     }
 
