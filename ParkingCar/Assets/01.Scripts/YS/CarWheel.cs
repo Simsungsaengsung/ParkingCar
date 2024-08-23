@@ -12,11 +12,10 @@ public class CarWheel : MonoBehaviour
 
     public void SetUp()
     {
-        Debug.Log("setup");
         _rigid = GetComponentInParent<Rigidbody>();
         _car = GetComponentInParent<Car>();
         _arrow = transform.GetChild(0).gameObject;
-        Debug.Log(0);
+        _arrow.SetActive(true);
         EventManager.AddListener<StartParkingEvent>(HandleStartParking);
         EventManager.AddListener<CarExitsMapEvent>(HandleCarExitsMapEvent);
     }
@@ -46,8 +45,7 @@ public class CarWheel : MonoBehaviour
     private void HandleStartParking(StartParkingEvent evt)
     {
         _isStart = true;
-        Debug.Log(_arrow == null);
-        _arrow.SetActive(false);
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     private void HandleCarExitsMapEvent(CarExitsMapEvent evt)
