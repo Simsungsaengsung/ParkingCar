@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Stage : MonoBehaviour
@@ -7,6 +9,7 @@ public class Stage : MonoBehaviour
     private UIDocument _uiDocument;
     private List<Button> _stageBtns;
     private Button _optionBtn;
+    private Button _homeBtn;
 
     private void Awake()
     {
@@ -39,6 +42,16 @@ public class Stage : MonoBehaviour
 
         _optionBtn = root.Q<Button>("OptionButton");
         _optionBtn.clicked += HandleOptionButtonClicked;
+
+        _homeBtn = root.Q<Button>("ExitButton");
+        _homeBtn.clicked += HandleHomeButtonClicked;
+    }
+
+    private void HandleHomeButtonClicked()
+    {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
+        Events.SceneChangeEvent.callBack = () => SceneManager.LoadScene("YS_Start");
+        EventManager.BroadCast(Events.SceneChangeEvent);
     }
 
     private void HandleOptionButtonClicked()

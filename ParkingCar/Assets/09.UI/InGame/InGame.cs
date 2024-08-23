@@ -111,6 +111,7 @@ public class InGame : MonoBehaviour
             _stageClearPanel.AddToClassList("open");
         else
         {
+            SoundManager.Instance.PlayWithBasePitch(Sound.GameOverSfx);
             DOVirtual.DelayedCall(2, () => StageManager.Instance.RetryStage());
         }
     }
