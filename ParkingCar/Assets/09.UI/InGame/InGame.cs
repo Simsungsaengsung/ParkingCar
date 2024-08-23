@@ -38,6 +38,11 @@ public class InGame : MonoBehaviour
         _stageClearPanel.Q<Button>("ExitButton").clicked += HandleExitButtonClicked;
     }
 
+    private void OnDisable()
+    {
+        EventManager.RemoveListener<StageFinishEvent>(HandleStageFinishEvent);
+    }
+
     private void Start()
     {
         SoundManager.Instance.PlayWithBasePitch(Sound.InGameBgm);
@@ -105,6 +110,8 @@ public class InGame : MonoBehaviour
         if (evt.isClear)
             _stageClearPanel.AddToClassList("open");
         else
+        {
             DOVirtual.DelayedCall(2, () => StageManager.Instance.RetryStage());
+        }
     }
 }
