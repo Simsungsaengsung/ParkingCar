@@ -60,7 +60,7 @@ public class Car : MonoBehaviour
     {
         Vector3 moveDirLeft = _bottom.right.Dir + _top.left.Dir;
         float crossY1 = Vector3.Cross(transform.right, moveDirLeft).y;
-        var leftRot = crossY1 < 0 
+        var leftRot = crossY1 < 0
             ? Quaternion.Euler(0, -_bottom.right.transform.localRotation.eulerAngles.y, 0)
             : Quaternion.Euler(0, -_top.left.transform.localRotation.eulerAngles.y, 0);
         
@@ -76,8 +76,6 @@ public class Car : MonoBehaviour
         moveDirRight = rightRot * moveDirRight;
         var crossYRight = Vector3.Cross(transform.forward, moveDirRight).y;
 
-        Debug.Log(crossYLeft);
-        Debug.Log(crossYRight);
         if (crossYLeft < -0.1 && crossYRight > 0.1)
         {
             Debug.Log("Vertical Divide");
@@ -114,8 +112,6 @@ public class Car : MonoBehaviour
         moveDirRight = rightRot * moveDirRight;
         var crossYRight = Vector3.Cross(-transform.right, moveDirRight).y;
 
-        Debug.Log(crossYLeft);
-        Debug.Log(crossYRight);
         if (crossYLeft < -0.1 && crossYRight > 0.1)
         {
             Debug.Log("Horizontal Divide");

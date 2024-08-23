@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class CarPart : MonoBehaviour
@@ -27,6 +27,8 @@ public class CarPart : MonoBehaviour
         group.Add(otherPart);
         _fixedJoint = gameObject.AddComponent<FixedJoint>();
         _fixedJoint.connectedBody = otherPart.rigid;
+        _fixedJoint.enableCollision = false;
+        _fixedJoint.enablePreprocessing = false;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -34,11 +36,11 @@ public class CarPart : MonoBehaviour
         if (other.gameObject.CompareTag("Wall"))
         {
             Vector3 reflect = Vector3.Reflect(transform.forward, other.contacts[0].normal);
+            Quaternion reflectRot = Quaternion.LookRotation(reflect.normalized);
             foreach (var carPart in group)
             {
-                carPart.rigid.velocity = Vector3.zero;
-                carPart.transform.forward = reflect;
-                carPart.wheel.transform.localRotation = Quaternion.identity;
+                carPart.wheel.transform.DOLocalRotateQuaternion(Quaternion.identity, 0.3f).SetEase(Ease.OutCirc);
+                carPart.transform.DORotateQuaternion(reflectRot, 0.3f).SetEase(Ease.OutCirc);
             }
         }
     }
