@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int _successCountNeeded;
     [SerializeField] private float _lifeTime = 7;
+    private bool _gameStart;
     private bool _gameClear;
 
     private float _currentTime = 0;
@@ -11,14 +12,21 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         ParkingSpace.SuccessCount = 0;
+        EventManager.AddListener<StartParkingEvent>(HandleStartParkingEvent);
+    }
+
+    private void HandleStartParkingEvent(StartParkingEvent evt)
+    {
+        _gameStart = true;
     }
 
     private void Update()
     {
-        if (_gameClear) return;
+        if (_gameStart == false && _gameClear) return;
         _currentTime += Time.deltaTime;
         if (_currentTime > _lifeTime)
         {
+            _gameClear = true;
             Events.StageClearEvent.isClear = false;
             EventManager.BroadCast(Events.StageClearEvent);
         }
