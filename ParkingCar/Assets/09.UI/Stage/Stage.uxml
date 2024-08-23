@@ -2,28 +2,30 @@
     <Style src="project://database/Assets/09.UI/Start/StartScene.uss?fileID=7433441132597879392&amp;guid=ded68e66d286bbb4f843447b6bdbf159&amp;type=3#StartScene" />
     <Style src="project://database/Assets/09.UI/Stage/Stage.uss?fileID=7433441132597879392&amp;guid=580d1ed396ef47c468531d185c515d32&amp;type=3#Stage" />
     <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/03.Assets/YS/Stage.png?fileID=21300000&amp;guid=09749d4c385f46947a41388c3a9a53d3&amp;type=3#Stage&quot;);">
-        <ui:VisualElement name="StageButtonPanel" style="flex-grow: 0; height: 500px; top: 300px; justify-content: center; align-items: center;">
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; position: relative; align-items: center;">
-                <ui:Button text="1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button" style="justify-content: center;">
-                    <ui:Label parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-                </ui:Button>
-                <ui:Button text="2" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
-                    <ui:Label parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-                </ui:Button>
-                <ui:Button text="3" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
-                    <ui:Label parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-                </ui:Button>
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.28);">
+            <ui:VisualElement name="StageButtonPanel" style="flex-grow: 0; height: 500px; top: 300px; justify-content: center; align-items: center;">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; position: relative; align-items: center;">
+                    <ui:Button text="1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button" style="justify-content: center;">
+                        <ui:Label parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                    <ui:Button text="2" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
+                        <ui:Label parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                    <ui:Button text="3" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
+                        <ui:Label parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; justify-content: center; align-items: center;">
+                    <ui:Button text="4" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
+                        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                    <ui:Button text="5" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
+                        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; justify-content: center; align-items: center;">
-                <ui:Button text="4" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
-                    <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-                </ui:Button>
-                <ui:Button text="5" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
-                    <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-                </ui:Button>
-            </ui:VisualElement>
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" style="position: absolute; left: 10px; top: 10px; width: 100px; height: 100px; background-image: url(&quot;project://database/Assets/03.Assets/YS/Home_Simple_Icons_UI.png?fileID=2800000&amp;guid=ba95c78754519d94997fb66471f99c1d&amp;type=3#Home_Simple_Icons_UI&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionButton" style="position: absolute; top: 10px; width: 100px; height: 100px; right: 10px; background-color: rgba(0, 0, 0, 0); background-image: url(&quot;project://database/Assets/03.Assets/YS/Settings_Simple_Icons_UI.png?fileID=21300000&amp;guid=dbdfb1a4eea99324ab81f6a797a893d8&amp;type=3#Settings_Simple_Icons_UI&quot;); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
         </ui:VisualElement>
-        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" style="position: absolute; left: 10px; top: 10px; width: 100px; height: 100px; background-image: url(&quot;project://database/Assets/03.Assets/YS/40+%20Simple%20Icons%20-%20Free/Home_Simple_Icons_UI.png?fileID=2800000&amp;guid=5f1184813a19f18459d23dacc47800e3&amp;type=3#Home_Simple_Icons_UI&quot;); background-color: rgba(188, 188, 188, 0); -unity-background-image-tint-color: rgb(0, 0, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-        <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="OptionButton" style="position: absolute; top: 10px; width: 100px; height: 100px; right: 10px; background-color: rgba(0, 0, 0, 0); background-image: url(&quot;project://database/Assets/03.Assets/YS/40+%20Simple%20Icons%20-%20Free/Settings_Simple_Icons_UI.png?fileID=21300000&amp;guid=7e30b45d0fd13614e97a8cf6dbe6c2b1&amp;type=3#Settings_Simple_Icons_UI&quot;); -unity-background-image-tint-color: rgb(0, 0, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
     </ui:VisualElement>
 </ui:UXML>

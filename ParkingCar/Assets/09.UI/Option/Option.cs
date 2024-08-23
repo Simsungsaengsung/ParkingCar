@@ -80,7 +80,6 @@ public class Option : MonoBehaviour, ISaveAble
         SaveManager.Instance.SaveData();
         EventManager.RemoveListener<OptionButtonClickEvent>(Open);
         EventManager.RemoveListener<SceneChangeEvent>(FadeOut);
-        Debug.Log("로그를 찍어보자");
     }
 
     private void HandleXButtonClicked()

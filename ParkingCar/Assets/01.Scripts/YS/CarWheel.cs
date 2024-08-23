@@ -66,6 +66,5 @@ public class CarWheel : MonoBehaviour
         _isSuccess = true;
         _rigid.velocity = Vector3.zero;
         _rigid.angularVelocity = Vector3.zero;
-        Debug.Log(0);
     }
 }
