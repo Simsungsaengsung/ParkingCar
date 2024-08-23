@@ -29,6 +29,7 @@ public class InGame : MonoBehaviour
 
         _pausePanel = root.Q("PausePanel");
         _pausePanel.Q<Button>("ContinueButton").clicked += HandleContinueButtonClicked;
+        _pausePanel.Q<Button>("RetryButton").clicked += HandleRetryButtonClicked;
         _pausePanel.Q<Button>("ExitButton").clicked += HandleExitButtonClicked;
         _pausePanel.Q<Button>("QuitButton").clicked += HandleQuitButtonClicked;
 

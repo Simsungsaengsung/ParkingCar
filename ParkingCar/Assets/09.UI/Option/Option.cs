@@ -120,6 +120,7 @@ public class Option : MonoBehaviour, ISaveAble
 
     private void HandleSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
+        Time.timeScale = 1;
         if (_fadePanel != null && _fadePanel.ClassListContains("out"))
         {
             _fadePanel.pickingMode = PickingMode.Ignore;
