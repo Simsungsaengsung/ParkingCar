@@ -21,8 +21,6 @@ public class Car : MonoBehaviour
 
     private bool _topLeft, _topRight, _bottomLeft, _bottomRight;
 
-    public int _successPartCount = 4;
-
     private void Awake()
     {
         _top.left.SetUp();

@@ -364,7 +364,7 @@ MonoBehaviour:
       type: 3}
     parkingCount: 2
   - stageIndex: 4
-    stageObj: {fileID: 619903111502832407, guid: 9adb5a8259adc54428dab2c02614c234,
+    stageObj: {fileID: 619903111502832407, guid: 645ba0a7f47cc8e4495466aa01333bb7,
       type: 3}
     parkingCount: 1
   - stageIndex: 5
@@ -384,7 +384,7 @@ MonoBehaviour:
       type: 3}
     parkingCount: 3
   - stageIndex: 9
-    stageObj: {fileID: 2906097367907932738, guid: 368689c688a164642abb9f24b71211ab,
+    stageObj: {fileID: 2906097367907932738, guid: 3fa328273dfe59f44bfa0c6cc3820fab,
       type: 3}
     parkingCount: 2
   - stageIndex: 10
