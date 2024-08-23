@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/09.UI/Start/StartScene.uss?fileID=7433441132597879392&amp;guid=ded68e66d286bbb4f843447b6bdbf159&amp;type=3#StartScene" />
-    <ui:VisualElement style="flex-grow: 1;">
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/03.Assets/YS/startBG.png?fileID=21300000&amp;guid=78238f1ca289c0948a3d9f74826e014a&amp;type=3#startBG&quot;);">
         <ui:VisualElement name="VisualElement" style="height: 50%;">
-            <ui:VisualElement name="TextPanel" style="height: 60%; flex-direction: row; align-items: flex-end; position: absolute; top: 300px; right: 50px;">
+            <ui:VisualElement name="TextPanel" style="height: 60%; flex-direction: row; align-items: flex-end; position: absolute; top: 100px; right: 50px; left: 100px;">
                 <ui:Label tabindex="-1" text="&apos;치&apos;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleLabel" class="label" style="color: rgb(255, 224, 81); font-size: 250px; rotate: -14deg;" />
                 <ui:Label tabindex="-1" text="입니다." parse-escape-sequences="true" display-tooltip-when-elided="true" name="TitleLabel" class="label" style="color: rgb(0, 0, 0); font-size: 125px; -unity-text-outline-color: rgb(255, 255, 255);" />
             </ui:VisualElement>

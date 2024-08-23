@@ -6,9 +6,6 @@ public struct Group
 {
     public CarPart left;
     public CarPart right;
-
-    [HideInInspector] public Vector3 cross;
-    [HideInInspector] public float dot;
 }
 
 public class Car : MonoBehaviour
@@ -35,18 +32,6 @@ public class Car : MonoBehaviour
 
     private void HandleStartParking(StartParkingEvent evt)
     {
-        _top.cross = Vector3.Cross(_top.left.Dir, _top.right.Dir);
-        _top.dot = Vector3.Dot(_top.left.Dir, _top.right.Dir);
-        
-        _bottom.cross = Vector3.Cross(_bottom.left.Dir, _bottom.right.Dir);
-        _bottom.dot = Vector3.Dot(_bottom.left.Dir, _bottom.right.Dir);
-        
-        _left.cross = Vector3.Cross(_left.left.Dir, _left.right.Dir);
-        _left.dot = Vector3.Dot(_left.left.Dir, _left.right.Dir);
-        
-        _right.cross = Vector3.Cross(_right.left.Dir, _right.right.Dir);
-        _right.dot = Vector3.Dot(_right.left.Dir, _right.right.Dir);
-        
         _topLeft =     Vector3.Dot(_top.left.Dir, transform.forward + -transform.right) is > 1f and < 1.414214f;
         _topRight =    Vector3.Dot(_top.right.Dir, transform.forward + transform.right) is > 1f and < 1.414214f;
         _bottomLeft =  Vector3.Dot(_bottom.right.Dir, -transform.forward + -transform.right) is > 1f and < 1.414214f;
@@ -63,98 +48,89 @@ public class Car : MonoBehaviour
         }
         else
         {
-            Vector3 dir = _top.left.Dir + _top.right.Dir + _bottom.left.Dir + _bottom.right.Dir;
-            Vector3 absDir = new Vector3(Mathf.Abs(dir.x), 0, Mathf.Abs(dir.z));
-
-            if (absDir.x < absDir.z)
+            if (CheckVerticalDivision() == false && CheckHorizontalDivision() == false)
             {
-                if (dir.z > 0)
-                    CheckVerticalDivision();
-                else
-                    CheckVerticalDivision();
-            }
-            else if (absDir.x > absDir.z)
-            {
-                if (dir.x > 0)
-                    CheckHorizontalDivision();
-                else
-                    CheckHorizontalDivision();
-            }
-            else if (Equals(absDir.x, absDir.z))
-            {
-                if (CheckVerticalDivision() == false)
-                    CheckHorizontalDivision();
+                Debug.Log("Not Divide");
+                ConnectAll();
             }
         }
     }
 
     private bool CheckVerticalDivision()
     {
-        if (_top.dot + _bottom.dot < 1.94f)
-        {
-            if (_left.cross.y < -0.1f && _right.cross.y < -0.1f)
-            {
-                Debug.Log("Vertical Divide");
-                CheckGroupDivision(_left);
-                CheckGroupDivision(_right);
-            }
-            else if (_left.cross.y > 0.1f && _right.cross.y > 0.1f)
-            {
-                Debug.Log("Vertical Compress");
-                ConnectAll();
-            }
-            else
-            {
-                Debug.Log("Not Divide 1");
-                ConnectAll();
-                return false;
-            }
-
-            return true;
-        }
+        Vector3 moveDirLeft = _bottom.right.Dir + _top.left.Dir;
+        float crossY1 = Vector3.Cross(transform.right, moveDirLeft).y;
+        var leftRot = crossY1 < 0
+            ? Quaternion.Euler(0, -_bottom.right.transform.localRotation.eulerAngles.y, 0)
+            : Quaternion.Euler(0, -_top.left.transform.localRotation.eulerAngles.y, 0);
         
-        Debug.Log("Not Divide 2");
-        ConnectAll();
-        return false;
+        moveDirLeft = leftRot * moveDirLeft;
+        var crossYLeft = Vector3.Cross(transform.forward, moveDirLeft).y;
+
+        Vector3 moveDirRight = _bottom.left.Dir + _top.right.Dir;
+        float crossY2 = Vector3.Cross(transform.right, moveDirRight).y;
+        var rightRot = crossY2 < 0
+            ? Quaternion.Euler(0, -_bottom.left.transform.localRotation.eulerAngles.y, 0)
+            : Quaternion.Euler(0, -_top.right.transform.localRotation.eulerAngles.y, 0);
+        
+        moveDirRight = rightRot * moveDirRight;
+        var crossYRight = Vector3.Cross(transform.forward, moveDirRight).y;
+
+        if (crossYLeft < -0.1 && crossYRight > 0.1)
+        {
+            Debug.Log("Vertical Divide");
+            CheckGroupDivision(_left);
+            CheckGroupDivision(_right);
+        }
+        //else if (crossYLeft > 0.1 && crossYRight < -0.1)
+        //{
+        //    Debug.Log("Vertical Compress");
+        //    ConnectAll();
+        //} 
+        else return false;
+
+        return true;
     }
 
     private bool CheckHorizontalDivision()
     {
-        if (_left.dot + _right.dot < 1.94f)
-        {
-            if (_top.cross.y < -0.1f && _bottom.cross.y < -0.1f)
-            {
-                Debug.Log("Horizontal Divide");
-                CheckGroupDivision(_top);
-                CheckGroupDivision(_bottom);
-            }
-            else if (_top.cross.y > 0.1f && _bottom.cross.y > 0.1f)
-            {
-                Debug.Log("Horizontal Compress");
-                ConnectAll();
-            }
-            else
-            {
-                Debug.Log("Not Divide");
-                ConnectAll();
-                return false;
-            }
-
-            return true;
-        }
+        Vector3 moveDirLeft = _bottom.left.Dir + _bottom.right.Dir;
+        float crossY1 = Vector3.Cross(transform.up, moveDirLeft).y;
+        var leftRot = crossY1 < 0 
+            ? Quaternion.Euler(0, -_bottom.left.transform.localRotation.eulerAngles.y, 0)
+            : Quaternion.Euler(0, -_bottom.right.transform.localRotation.eulerAngles.y, 0);
         
-        Debug.Log("Not Divide");
-        ConnectAll();
-        return false;
+        moveDirLeft = leftRot * moveDirLeft;
+        var crossYLeft = Vector3.Cross(-transform.right, moveDirLeft).y;
+
+        Vector3 moveDirRight = _top.left.Dir + _top.right.Dir;
+        float crossY2 = Vector3.Cross(transform.up, moveDirRight).y;
+        var rightRot = crossY2 < 0
+            ? Quaternion.Euler(0, -_top.right.transform.localRotation.eulerAngles.y, 0)
+            : Quaternion.Euler(0, -_top.left.transform.localRotation.eulerAngles.y, 0);
+        
+        moveDirRight = rightRot * moveDirRight;
+        var crossYRight = Vector3.Cross(-transform.right, moveDirRight).y;
+
+        if (crossYLeft < -0.1 && crossYRight > 0.1)
+        {
+            Debug.Log("Horizontal Divide");
+            CheckGroupDivision(_top);
+            CheckGroupDivision(_bottom);
+        }
+        //else if (crossYLeft > 0.1 && crossYRight < -0.1)
+        //{
+        //    Debug.Log("Vertical Compress");
+        //    ConnectAll();
+        //} 
+        else return false;
+
+        return true;
     }
     
     private void CheckGroupDivision(Group group)
     {
-        if (group.dot is > -1 and < 0f && group.cross.y > 0)
-        {
-            
-        }
-        else
+        if (Vector3.Dot(group.left.Dir, group.right.Dir) is > 0.1f and < 1f)
         {
             // Connect group's Left and Right
             Connect(group);
@@ -163,8 +139,8 @@ public class Car : MonoBehaviour
 
     private void Connect(Group group)
     {
-        group.left.Connect(group.right.rigid);
-        group.right.Connect(group.left.rigid);
+        group.left.Connect(group.right);
+        group.right.Connect(group.left);
     }
 
     private void ConnectAll()
@@ -173,5 +149,10 @@ public class Car : MonoBehaviour
         Connect(_bottom);
         Connect(_left);
         Connect(_right);
+        _top.left.Connect(_bottom.left);
+        _bottom.left.Connect(_top.left);
+        
+        _top.right.Connect(_bottom.right);
+        _bottom.right.Connect(_top.right);
     }
 }

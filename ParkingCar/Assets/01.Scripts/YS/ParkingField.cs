@@ -15,7 +15,7 @@ public class ParkingField : MonoBehaviour
                 EventManager.BroadCast(Events.CarExitsMapEvent);
                 gameObject.SetActive(false);
                 
-                Events.StageClearEvent.isClear = true;
+                Events.StageClearEvent.isClear = false;
                 EventManager.BroadCast(Events.StageClearEvent);
             }
         }

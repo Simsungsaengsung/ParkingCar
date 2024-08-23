@@ -9,7 +9,7 @@ public class ParkingSpace : MonoBehaviour
     [SerializeField] private int _partsNeeded = 4;
     [SerializeField] private LayerMask _whatIsParkingPart;
 
-    private Collider[] _parts = new Collider[4];
+    private Collider[] _parts;
 
     private ParticleSystem _clearParticle;
 
