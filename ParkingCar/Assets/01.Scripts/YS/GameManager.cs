@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_gameStart == false && _gameClear) return;
+        if (_gameStart == false || _gameClear) return;
         _currentTime += Time.deltaTime;
         if (_currentTime > _lifeTime)
         {
@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
         }
         if (ParkingSpace.SuccessCount >= _successCountNeeded)
         {
-            Debug.Log("Clear");
             _gameClear = true;
             Time.timeScale = 0;
             Events.StageClearEvent.isClear = true;
