@@ -31,14 +31,12 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Debug.Log("Claer");
             StageClear();
         }
     }
     
     private void HandleSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        Debug.Log("Reload");
         Instantiate(_stageObjDictionary[_currentStageIdx].stageObj, Vector3.zero, Quaternion.identity);
         SceneManager.sceneLoaded -= HandleSceneLoaded;
     }

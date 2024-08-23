@@ -36,14 +36,9 @@ public class SaveManager : MonoSingleton<SaveManager>
     public void Init()
     {
         _saveAbleObjs = FindAllSaveObjects();
-        Debug.Log(_saveAbleObjs.Count);
         if (_gameData.stageSaveDatas.Count != 0)
-        {
-            Debug.Log("Inited");
             return;
-        }
         
-        Debug.Log("Init");
         _gameData = Load();
         if (_gameData == null)
             _gameData = new GameData();
@@ -68,7 +63,6 @@ public class SaveManager : MonoSingleton<SaveManager>
     {
         _directoryPath = Application.persistentDataPath;
         string fullPath = Path.Combine(_directoryPath, _fileName);
-        Debug.Log("SAve");
         try
         {
             Directory.CreateDirectory(_directoryPath); //존재하면 안만듦
