@@ -108,7 +108,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
         return -1;
     }
 
-    public int GetStageParkingCount(int idx) => _stageObjDictionary[idx].parkingCount;
+    public int GetStageParkingCount() => _stageObjDictionary[_currentStageIdx].parkingCount;
 
     private int GetNextStageIdx()
     {

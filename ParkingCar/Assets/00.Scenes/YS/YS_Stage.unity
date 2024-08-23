@@ -354,21 +354,27 @@ MonoBehaviour:
   - stageIndex: 1
     stageObj: {fileID: 2923021621910809466, guid: 7ee5d9f4417ee794ea0be95ad2884dc3,
       type: 3}
+    parkingCount: 1
   - stageIndex: 2
     stageObj: {fileID: 2279244392987033052, guid: 4f57f6792718ec64b9270574542349a8,
       type: 3}
+    parkingCount: 1
   - stageIndex: 3
     stageObj: {fileID: 4105366584704386129, guid: d94bfec20573d9148acfb650d03d6450,
       type: 3}
+    parkingCount: 2
   - stageIndex: 4
     stageObj: {fileID: 619903111502832407, guid: 9adb5a8259adc54428dab2c02614c234,
       type: 3}
+    parkingCount: 1
   - stageIndex: 5
     stageObj: {fileID: 1234812322687176723, guid: 531c6f74529f1e441b5ecdf01fcf8374,
       type: 3}
+    parkingCount: 1
   - stageIndex: 6
     stageObj: {fileID: 7405260492215398715, guid: aea5f69b098948947be9aee54024c37e,
       type: 3}
+    parkingCount: 4
 --- !u!4 &1724314341
 Transform:
   m_ObjectHideFlags: 0
