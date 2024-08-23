@@ -26,6 +26,7 @@ public class CarPart : MonoBehaviour
 
     public void Connect(CarPart otherPart)
     {
+        if (otherPart == this || group.Exists(p => p == otherPart)) return;
         group.Add(otherPart);
         _fixedJoint = gameObject.AddComponent<FixedJoint>();
         _fixedJoint.connectedBody = otherPart.rigid;
