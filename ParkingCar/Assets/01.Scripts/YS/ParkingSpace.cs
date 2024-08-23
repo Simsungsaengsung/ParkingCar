@@ -30,6 +30,13 @@ public class ParkingSpace : MonoBehaviour
             _isSuccess = true;
             SuccessCount += 1;
             _clearParticle.Play();
+            for (int i = 0; i < cnt; i++)
+            {
+                if (_parts[i].transform.parent.TryGetComponent(out CarPart carPart))
+                {
+                    carPart.ParkingSucceed();
+                }
+            }
         }
     }
 }
