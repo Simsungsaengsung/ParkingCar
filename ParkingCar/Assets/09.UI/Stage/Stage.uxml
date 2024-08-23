@@ -14,12 +14,27 @@
                     <ui:Button text="3" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
                         <ui:Label parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                     </ui:Button>
-                </ui:VisualElement>
-                <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; justify-content: center; align-items: center;">
                     <ui:Button text="4" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
-                        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                        <ui:Label parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                     </ui:Button>
                     <ui:Button text="5" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
+                        <ui:Label parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; justify-content: center; align-items: center;">
+                    <ui:Button text="6" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
+                        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                    <ui:Button text="7" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
+                        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                    <ui:Button text="8" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
+                        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                    <ui:Button text="9" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
+                        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+                    </ui:Button>
+                    <ui:Button text="10" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StageButton" class="stage-button">
                         <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
                     </ui:Button>
                 </ui:VisualElement>
