@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CarWheel : MonoBehaviour
@@ -14,10 +15,15 @@ public class CarWheel : MonoBehaviour
     {
         _rigid = GetComponentInParent<Rigidbody>();
         _car = GetComponentInParent<Car>();
-        _arrow = transform.GetChild(0).gameObject;
-        _arrow.SetActive(true);
+        transform.GetChild(0).gameObject.SetActive(true);
         EventManager.AddListener<StartParkingEvent>(HandleStartParking);
         EventManager.AddListener<CarExitsMapEvent>(HandleCarExitsMapEvent);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.RemoveListener<StartParkingEvent>(HandleStartParking);
+        EventManager.RemoveListener<CarExitsMapEvent>(HandleCarExitsMapEvent);
     }
 
     private void FixedUpdate()

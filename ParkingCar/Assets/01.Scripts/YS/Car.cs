@@ -30,6 +30,11 @@ public class Car : MonoBehaviour
         EventManager.AddListener<StartParkingEvent>(HandleStartParking);
     }
 
+    private void OnDisable()
+    {
+        EventManager.RemoveListener<StartParkingEvent>(HandleStartParking);
+    }
+
     private void HandleStartParking(StartParkingEvent evt)
     {
         _topLeft =     Vector3.Dot(_top.left.Dir, transform.forward + -transform.right) is > 1f and < 1.414214f;

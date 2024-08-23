@@ -105,6 +105,6 @@ public class InGame : MonoBehaviour
         if (evt.isClear)
             _stageClearPanel.AddToClassList("open");
         else
-            DOVirtual.DelayedCall(3, () => StageManager.Instance.RetryStage());
+            DOVirtual.DelayedCall(2, () => StageManager.Instance.RetryStage());
     }
 }
