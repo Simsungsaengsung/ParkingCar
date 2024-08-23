@@ -397,6 +397,7 @@ Transform:
   - {fileID: 39973415481310146}
   - {fileID: 6456928585109248227}
   - {fileID: 2956438547871075790}
+  - {fileID: 7758807967043682003}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3807826954243932138
@@ -772,6 +773,56 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 359247922167924098}
+--- !u!1 &6932528724419720261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7758807967043682003}
+  - component: {fileID: 688424984417579778}
+  m_Layer: 0
+  m_Name: ParkingField
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7758807967043682003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6932528724419720261}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1561203260849653817}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &688424984417579778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6932528724419720261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474fd8843f36b444ba5206023e36c5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carParts:
+  - {fileID: 1447315054363204185}
+  - {fileID: 2307488883220772032}
+  - {fileID: 4800310332376932547}
+  - {fileID: 2968676638410386355}
+  _range: 23.19
 --- !u!1 &7984263543593588689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1075,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d78ec98d3eae4146ac785137ea356d5, type: 3}
+--- !u!4 &1447315054363204185 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2606832633133738382, guid: 7d78ec98d3eae4146ac785137ea356d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3474721899814187991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2307488883220772032 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1170207758322534167, guid: 7d78ec98d3eae4146ac785137ea356d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3474721899814187991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2968676638410386355 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1804371720023464036, guid: 7d78ec98d3eae4146ac785137ea356d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3474721899814187991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4800310332376932547 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8261451061320422164, guid: 7d78ec98d3eae4146ac785137ea356d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3474721899814187991}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4917783786032765279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8360874864451086984, guid: 7d78ec98d3eae4146ac785137ea356d5,
