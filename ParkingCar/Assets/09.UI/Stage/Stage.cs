@@ -13,8 +13,9 @@ public class Stage : MonoBehaviour
         _uiDocument = GetComponent<UIDocument>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.StageSelectBgm);
         var root = _uiDocument.rootVisualElement;
         _stageBtns = root.Query<Button>("StageButton").ToList();
         for (int i = 0; i < _stageBtns.Count; i++)
@@ -42,6 +43,7 @@ public class Stage : MonoBehaviour
 
     private void HandleOptionButtonClicked()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         Events.OptionButtonClickEvent.timeStop = false;
         Events.OptionButtonClickEvent.open = !Events.OptionButtonClickEvent.open;
         EventManager.BroadCast(Events.OptionButtonClickEvent);
@@ -49,6 +51,7 @@ public class Stage : MonoBehaviour
 
     private void HandleStageButtonClicked(ClickEvent evt, int idx)
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         Events.SceneChangeEvent.callBack = () => StageManager.Instance.OpenStage(idx + 1);
         EventManager.BroadCast(Events.SceneChangeEvent);
     }

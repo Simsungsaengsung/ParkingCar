@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 208115243}
   - component: {fileID: 208115242}
   m_Layer: 0
-  m_Name: SvaeManager
+  m_Name: SaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +234,7 @@ Transform:
   m_GameObject: {fileID: 208115241}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6084194, y: 1.608526, z: 4.3155117}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -548,7 +548,7 @@ MonoBehaviour:
     pitch: 1
     pitchRandomness: 0
   - sound: 3
-    audioType: 1
+    audioType: 0
     clip: {fileID: 8300000, guid: 61b9bb91fc1866248a58c0a2b5725267, type: 3}
     volume: 1
     pitch: 1

@@ -8,7 +8,7 @@ public enum Sound // 사운드 종류, 사운드 추가하고 싶으면 여기�
     InGameBgm,
     IntroBgm,
     ButtonClickSfx,
-    ClearBgm,
+    ClearSfx,
     GameOverBgm,
     StageSelectBgm,
 }
@@ -29,10 +29,8 @@ public struct Audio // 사운드 출력 시 필요한 정보들
     [Range(0, 1)] public float pitchRandomness; // PlayWithVariablePitch로 실행할 떄 pitch 얼마나 랜덤하게 실행할지
 }
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : MonoSingleton<SoundManager>
 {
-    public static SoundManager Instance;
-    
     [HideInInspector] public string enumName;
     
     private Dictionary<AudioType, AudioSource> _audioSource = new();
@@ -40,11 +38,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private Audio[] _audios;
     private Dictionary<Sound, Audio> _audioClips = new();
 
-    private void Awake()
+    public override void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-
+        base.Awake();
+        DontDestroyOnLoad(gameObject);
         // AudioSource 가져오고 AUdioType별로 loop 설정
         var sources = GetComponents<AudioSource>();
         _audioSource.Add(AudioType.BGM, sources[0]);

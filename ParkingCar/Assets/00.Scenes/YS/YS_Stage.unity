@@ -331,7 +331,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1724314341}
   - component: {fileID: 1724314340}
-  - component: {fileID: 1724314342}
   m_Layer: 0
   m_Name: StageManager
   m_TagString: Untagged
@@ -353,22 +352,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stages:
   - stageIndex: 1
-    stageObj: {fileID: 4652701477292656864, guid: f2e3874398f777a4185df9255044f302,
+    stageObj: {fileID: 2923021621910809466, guid: 7ee5d9f4417ee794ea0be95ad2884dc3,
       type: 3}
   - stageIndex: 2
-    stageObj: {fileID: 4652701477292656864, guid: a170e24f98ac3b0449c0ed5d4a38cb50,
+    stageObj: {fileID: 2279244392987033052, guid: 4f57f6792718ec64b9270574542349a8,
       type: 3}
   - stageIndex: 3
-    stageObj: {fileID: 4652701477292656864, guid: c4d0892ee8666c74e8f9c1ab8ee1624e,
+    stageObj: {fileID: 4105366584704386129, guid: d94bfec20573d9148acfb650d03d6450,
       type: 3}
   - stageIndex: 4
-    stageObj: {fileID: 4652701477292656864, guid: 3c181d32835d8264a941b9ac87f6f7c3,
+    stageObj: {fileID: 619903111502832407, guid: 9adb5a8259adc54428dab2c02614c234,
       type: 3}
   - stageIndex: 5
-    stageObj: {fileID: 4652701477292656864, guid: ebe75f96f00b5eb499c06edd3e934ef1,
+    stageObj: {fileID: 1234812322687176723, guid: 531c6f74529f1e441b5ecdf01fcf8374,
       type: 3}
   - stageIndex: 6
-    stageObj: {fileID: 4652701477292656864, guid: aa8375d1e017ff543a79277b770f37d6,
+    stageObj: {fileID: 7405260492215398715, guid: aea5f69b098948947be9aee54024c37e,
       type: 3}
 --- !u!4 &1724314341
 Transform:
@@ -385,29 +384,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1724314342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1724314339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b873f0a417f402448b6aac1223c5096a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fileName: asdf
-  _gameData:
-    sfxValue: 1
-    bgmValue: 1
-    stageSaveDatas:
-      TempKey: 0
-      TempValue:
-        isClear: 0
-        isUnlock: 0
-      SerializedKeys: 
-      SerializedValues: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

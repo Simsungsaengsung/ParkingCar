@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -37,13 +38,20 @@ public class InGame : MonoBehaviour
         _stageClearPanel.Q<Button>("ExitButton").clicked += HandleExitButtonClicked;
     }
 
+    private void Start()
+    {
+        SoundManager.Instance.PlayWithBasePitch(Sound.InGameBgm);
+    }
+
     private void HandleParkingButtonClicked()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         EventManager.BroadCast(Events.StartParkingEvent);
     }
 
     private void OnOptionButtonClicked()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         Events.OptionButtonClickEvent.timeStop = true;
         Events.OptionButtonClickEvent.open = !Events.OptionButtonClickEvent.open;
         EventManager.BroadCast(Events.OptionButtonClickEvent);
@@ -51,18 +59,21 @@ public class InGame : MonoBehaviour
 
     private void HandlePauseButtonClicked()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         _pausePanel.AddToClassList("open");
         Time.timeScale = 0;
     }
 
     private void HandleContinueButtonClicked()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         Time.timeScale = 1;
         _pausePanel.RemoveFromClassList("open");
     }
     
     private void HandleExitButtonClicked()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         Events.SceneChangeEvent.callBack = () =>
         {
             Time.timeScale = 1;
@@ -73,21 +84,25 @@ public class InGame : MonoBehaviour
     
     private void HandleQuitButtonClicked()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         Application.Quit();
     }
 
     private void HandleNextButtonClicked()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         StageManager.Instance.NextStage();
     }
 
     private void HandleRetryButtonClicked()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         StageManager.Instance.RetryStage();
     }
 
     private void HandleStageFinishEvent(StageFinishEvent evt)
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         if (evt.isClear)
             _stageClearPanel.AddToClassList("open");
         else

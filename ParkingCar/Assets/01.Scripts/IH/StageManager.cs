@@ -23,13 +23,13 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
     {
         DontDestroyOnLoad(gameObject);
         base.Awake();
+        _currentStageIdx = 1;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            _currentStageIdx = 1;
             Debug.Log("Claer");
             StageClear();
         }
@@ -49,7 +49,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
             return;
         
         SceneManager.sceneLoaded += HandleSceneLoaded;
-        SceneManager.LoadScene("Stage");
+        SceneManager.LoadScene("YS");
     }
 
     public void NextStage()
@@ -73,7 +73,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
     
     public void ReturnMenu()
     {
-        SceneManager.LoadScene("Chapter");
+        SceneManager.LoadScene("YS_Stage");
     }
 
     public void StageClear()
@@ -85,6 +85,7 @@ public class StageManager : MonoSingleton<StageManager>, ISaveAble
         if(_stageObjDictionary.ContainsKey(nextIdx))
             _stageSaveDatas[nextIdx].isUnlock = true;
         
+        SoundManager.Instance.PlayWithBasePitch(Sound.ClearSfx);
         SaveManager.Instance.SaveData();
     }
 
