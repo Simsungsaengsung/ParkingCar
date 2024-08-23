@@ -44,13 +44,12 @@ public class Car : MonoBehaviour
     {
         if (_topLeft && _topRight && _bottomLeft && _bottomRight)
         {
-            Debug.Log("4 Side Divide");
+            
         }
         else
         {
             if (CheckVerticalDivision() == false && CheckHorizontalDivision() == false)
             {
-                Debug.Log("Not Divide");
                 ConnectAll();
             }
         }
@@ -78,7 +77,6 @@ public class Car : MonoBehaviour
 
         if (crossYLeft < -0.1 && crossYRight > 0.1)
         {
-            Debug.Log("Vertical Divide");
             CheckGroupDivision(_left);
             CheckGroupDivision(_right);
         }
@@ -114,7 +112,6 @@ public class Car : MonoBehaviour
 
         if (crossYLeft < -0.1 && crossYRight > 0.1)
         {
-            Debug.Log("Horizontal Divide");
             CheckGroupDivision(_top);
             CheckGroupDivision(_bottom);
         }
