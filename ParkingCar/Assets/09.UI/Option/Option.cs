@@ -85,6 +85,7 @@ public class Option : MonoBehaviour, ISaveAble
 
     private void HandleXButtonClicked()
     {
+        SaveManager.Instance.SaveData();
         _optionPanel.RemoveFromClassList("open");
         Time.timeScale = 1;
         Events.OptionButtonClickEvent.open = false;

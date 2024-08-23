@@ -72,6 +72,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1888075753720334208}
   - {fileID: 2482313758246827618}
   - {fileID: 6883795300809757423}
   - {fileID: 6524107824158853088}
@@ -224,6 +225,56 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2914014059810748813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1888075753720334208}
+  - component: {fileID: 3177313217922031254}
+  m_Layer: 0
+  m_Name: ParkingField
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1888075753720334208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2914014059810748813}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1850117067615905717}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3177313217922031254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2914014059810748813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474fd8843f36b444ba5206023e36c5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carParts:
+  - {fileID: 8239454428614210916}
+  - {fileID: 5064387475774643197}
+  - {fileID: 2653651154017423358}
+  - {fileID: 5728388333613532302}
+  _range: 27.3
 --- !u!1 &3396122024434590398
 GameObject:
   m_ObjectHideFlags: 0
@@ -3042,6 +3093,30 @@ PrefabInstance:
 --- !u!4 &2482313758246827618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8360874864451086984, guid: 7d78ec98d3eae4146ac785137ea356d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6229947585017453802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2653651154017423358 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8261451061320422164, guid: 7d78ec98d3eae4146ac785137ea356d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6229947585017453802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5064387475774643197 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1170207758322534167, guid: 7d78ec98d3eae4146ac785137ea356d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6229947585017453802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5728388333613532302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1804371720023464036, guid: 7d78ec98d3eae4146ac785137ea356d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6229947585017453802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8239454428614210916 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2606832633133738382, guid: 7d78ec98d3eae4146ac785137ea356d5,
     type: 3}
   m_PrefabInstance: {fileID: 6229947585017453802}
   m_PrefabAsset: {fileID: 0}
