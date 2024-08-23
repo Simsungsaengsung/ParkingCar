@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
         _currentTime += Time.deltaTime;
         if (_currentTime > _lifeTime)
         {
+            _gameClear = true;
             Events.StageClearEvent.isClear = false;
             EventManager.BroadCast(Events.StageClearEvent);
         }
