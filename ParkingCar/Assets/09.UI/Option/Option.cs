@@ -85,6 +85,7 @@ public class Option : MonoBehaviour, ISaveAble
 
     private void HandleXButtonClicked()
     {
+        SoundManager.Instance.PlayWithBasePitch(Sound.ButtonClickSfx);
         SaveManager.Instance.SaveData();
         _optionPanel.RemoveFromClassList("open");
         Time.timeScale = 1;
