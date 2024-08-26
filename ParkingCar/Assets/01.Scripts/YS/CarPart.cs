@@ -6,10 +6,10 @@ public class CarPart : MonoBehaviour
 {
     private FixedJoint _fixedJoint;
     [HideInInspector] public Rigidbody rigid;
-    public List<CarPart> group;
+    [HideInInspector] public List<CarPart> group;
 
     private Car _car;
-    public CarWheel wheel;
+    [HideInInspector] public CarWheel wheel;
 
     public Vector3 Dir => wheel.transform.forward;
 

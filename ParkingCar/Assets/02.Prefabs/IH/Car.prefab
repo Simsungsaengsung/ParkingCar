@@ -583,13 +583,7 @@ MonoBehaviour:
     left: {fileID: 2178435262447496150}
     right: {fileID: 7304276004451872528}
   _bottom:
-    left: {fileID: 1362014100789830473}
-    right: {fileID: 3053126597214035511}
-  _left:
     left: {fileID: 3053126597214035511}
-    right: {fileID: 2178435262447496150}
-  _right:
-    left: {fileID: 7304276004451872528}
     right: {fileID: 1362014100789830473}
 --- !u!1 &4930874756591669203
 GameObject:

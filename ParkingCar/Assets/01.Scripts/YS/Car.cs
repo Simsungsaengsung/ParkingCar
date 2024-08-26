@@ -16,8 +16,6 @@ public class Car : MonoBehaviour
     
     [SerializeField] private Group _top;
     [SerializeField] private Group _bottom;
-    [SerializeField] private Group _left;
-    [SerializeField] private Group _right;
 
     private bool _topLeft, _topRight, _bottomLeft, _bottomRight;
 
@@ -37,9 +35,9 @@ public class Car : MonoBehaviour
 
     private void HandleStartParking(StartParkingEvent evt)
     {
-        _topLeft =     Vector3.Dot(_top.left.Dir, transform.forward + -transform.right) is > 1f and < 1.414214f;
+        _topLeft =     Vector3.Dot(_top.left.Dir, transform.forward - transform.right) is > 1f and < 1.414214f;
         _topRight =    Vector3.Dot(_top.right.Dir, transform.forward + transform.right) is > 1f and < 1.414214f;
-        _bottomLeft =  Vector3.Dot(_bottom.right.Dir, -transform.forward + -transform.right) is > 1f and < 1.414214f;
+        _bottomLeft =  Vector3.Dot(_bottom.right.Dir, -transform.forward - transform.right) is > 1f and < 1.414214f;
         _bottomRight = Vector3.Dot(_bottom.left.Dir, -transform.forward + transform.right) is > 1f and < 1.414214f;
         
         CheckDivision();
@@ -62,19 +60,19 @@ public class Car : MonoBehaviour
 
     private bool CheckVerticalDivision()
     {
-        Vector3 moveDirLeft = _bottom.right.Dir + _top.left.Dir;
+        Vector3 moveDirLeft = _bottom.left.Dir + _top.left.Dir;
         float crossY1 = Vector3.Cross(transform.right, moveDirLeft).y;
         var leftRot = crossY1 < 0
-            ? Quaternion.Euler(0, -_bottom.right.transform.localRotation.eulerAngles.y, 0)
+            ? Quaternion.Euler(0, -_bottom.left.transform.localRotation.eulerAngles.y, 0)
             : Quaternion.Euler(0, -_top.left.transform.localRotation.eulerAngles.y, 0);
         
         moveDirLeft = leftRot * moveDirLeft;
         var crossYLeft = Vector3.Cross(transform.forward, moveDirLeft).y;
 
-        Vector3 moveDirRight = _bottom.left.Dir + _top.right.Dir;
+        Vector3 moveDirRight = _bottom.right.Dir + _top.right.Dir;
         float crossY2 = Vector3.Cross(transform.right, moveDirRight).y;
         var rightRot = crossY2 < 0
-            ? Quaternion.Euler(0, -_bottom.left.transform.localRotation.eulerAngles.y, 0)
+            ? Quaternion.Euler(0, -_bottom.right.transform.localRotation.eulerAngles.y, 0)
             : Quaternion.Euler(0, -_top.right.transform.localRotation.eulerAngles.y, 0);
         
         moveDirRight = rightRot * moveDirRight;
@@ -82,8 +80,8 @@ public class Car : MonoBehaviour
 
         if (crossYLeft < -0.1 && crossYRight > 0.1)
         {
-            CheckGroupDivision(_left);
-            CheckGroupDivision(_right);
+            CheckGroupDivision(_bottom.left, _top.left);
+            CheckGroupDivision(_top.right, _bottom.right);
         }
         //else if (crossYLeft > 0.1 && crossYRight < -0.1)
         //{
@@ -100,8 +98,8 @@ public class Car : MonoBehaviour
         Vector3 moveDirLeft = _bottom.left.Dir + _bottom.right.Dir;
         float crossY1 = Vector3.Cross(transform.up, moveDirLeft).y;
         var leftRot = crossY1 < 0 
-            ? Quaternion.Euler(0, -_bottom.left.transform.localRotation.eulerAngles.y, 0)
-            : Quaternion.Euler(0, -_bottom.right.transform.localRotation.eulerAngles.y, 0);
+            ? Quaternion.Euler(0, -_bottom.right.transform.localRotation.eulerAngles.y, 0)
+            : Quaternion.Euler(0, -_bottom.left.transform.localRotation.eulerAngles.y, 0);
         
         moveDirLeft = leftRot * moveDirLeft;
         var crossYLeft = Vector3.Cross(-transform.right, moveDirLeft).y;
@@ -117,8 +115,8 @@ public class Car : MonoBehaviour
 
         if (crossYLeft < -0.1 && crossYRight > 0.1)
         {
-            CheckGroupDivision(_top);
-            CheckGroupDivision(_bottom);
+            CheckGroupDivision(_top.left, _top.right);
+            CheckGroupDivision(_bottom.right, _bottom.left);
         }
         //else if (crossYLeft > 0.1 && crossYRight < -0.1)
         //{
@@ -130,27 +128,27 @@ public class Car : MonoBehaviour
         return true;
     }
     
-    private void CheckGroupDivision(Group group)
+    private void CheckGroupDivision(CarPart left, CarPart right)
     {
-        if (Vector3.Dot(group.left.Dir, group.right.Dir) is > 0.1f and < 1f)
+        if (Vector3.Dot(left.Dir, right.Dir) is > 0.1f and < 1f)
         {
             // Connect group's Left and Right
-            Connect(group);
+            Connect(left, right);
         }
     }
 
-    private void Connect(Group group)
+    private void Connect(CarPart left, CarPart right)
     {
-        group.left.Connect(group.right);
-        group.right.Connect(group.left);
+        left.Connect(right);
+        right.Connect(left);
     }
 
     private void ConnectAll()
     {
-        Connect(_top);
-        Connect(_bottom);
-        Connect(_left);
-        Connect(_right);
+        Connect(_top.left, _top.right);
+        Connect(_bottom.right, _bottom.left);
+        Connect(_bottom.left, _top.left);
+        Connect(_top.right, _bottom.right);
         _top.left.Connect(_bottom.left);
         _bottom.left.Connect(_top.left);
         

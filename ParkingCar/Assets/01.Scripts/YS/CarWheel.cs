@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class CarWheel : MonoBehaviour
@@ -16,7 +15,6 @@ public class CarWheel : MonoBehaviour
     {
         _rigid = GetComponentInParent<Rigidbody>();
         _car = GetComponentInParent<Car>();
-        transform.GetChild(0).gameObject.SetActive(true);
         EventManager.AddListener<StartParkingEvent>(HandleStartParking);
         EventManager.AddListener<CarExitsMapEvent>(HandleCarExitsMapEvent);
     }
@@ -31,7 +29,7 @@ public class CarWheel : MonoBehaviour
     {
         if (_isSuccess) return;
         CalculateSpeed();
-        _rigid.velocity = transform.forward * _currentSpeed;
+        _rigid.MovePosition(transform.position + transform.forward * (Time.fixedDeltaTime * _currentSpeed));
     }
 
     private void CalculateSpeed()
