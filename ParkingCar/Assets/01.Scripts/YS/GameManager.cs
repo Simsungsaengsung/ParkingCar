@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     private void HandleStartParkingEvent(StartParkingEvent evt)
     {
         _gameStart = true;
-        _successCountNeeded = StageManager.Instance.GetStageParkingCount();
     }
 
     private void Update()

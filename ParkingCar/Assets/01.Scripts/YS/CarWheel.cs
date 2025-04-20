@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CarWheel : MonoBehaviour
@@ -7,7 +8,6 @@ public class CarWheel : MonoBehaviour
 
     private float _currentSpeed = 0;
     private bool _isStart;
-    private bool _isSuccess;
 
     private GameObject _arrow;
 
@@ -15,6 +15,7 @@ public class CarWheel : MonoBehaviour
     {
         _rigid = GetComponentInParent<Rigidbody>();
         _car = GetComponentInParent<Car>();
+        transform.GetChild(0).gameObject.SetActive(true);
         EventManager.AddListener<StartParkingEvent>(HandleStartParking);
         EventManager.AddListener<CarExitsMapEvent>(HandleCarExitsMapEvent);
     }
@@ -27,9 +28,8 @@ public class CarWheel : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_isSuccess) return;
         CalculateSpeed();
-        _rigid.MovePosition(transform.position + transform.forward * (Time.fixedDeltaTime * _currentSpeed));
+        _rigid.velocity = transform.forward * _currentSpeed;
     }
 
     private void CalculateSpeed()
@@ -57,12 +57,5 @@ public class CarWheel : MonoBehaviour
     private void HandleCarExitsMapEvent(CarExitsMapEvent evt)
     {
         _isStart = false;
-    }
-
-    public void ParkingSucceed()
-    {
-        _isSuccess = true;
-        _rigid.velocity = Vector3.zero;
-        _rigid.angularVelocity = Vector3.zero;
     }
 }

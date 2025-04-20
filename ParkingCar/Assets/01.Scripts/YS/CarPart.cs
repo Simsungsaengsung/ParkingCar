@@ -6,16 +6,14 @@ public class CarPart : MonoBehaviour
 {
     private FixedJoint _fixedJoint;
     [HideInInspector] public Rigidbody rigid;
-    [HideInInspector] public List<CarPart> group;
-
-    private Car _car;
-    [HideInInspector] public CarWheel wheel;
+    public List<CarPart> group;
+    
+    private CarWheel wheel;
 
     public Vector3 Dir => wheel.transform.forward;
 
     public void SetUp()
     {
-        _car = GetComponentInParent<Car>();
         rigid = GetComponent<Rigidbody>();
         wheel = GetComponentInChildren<CarWheel>();
         wheel.SetUp();
@@ -45,10 +43,5 @@ public class CarPart : MonoBehaviour
                 carPart.transform.DORotateQuaternion(reflectRot, 0.3f).SetEase(Ease.OutCirc);
             }
         }
-    }
-
-    public void ParkingSucceed()
-    {
-        group.ForEach(p => p.wheel.ParkingSucceed());
     }
 }
