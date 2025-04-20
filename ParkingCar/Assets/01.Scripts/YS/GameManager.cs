@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int _successCountNeeded;
-    private float _lifeTime = 5;
+    [SerializeField] private float _lifeTime = 7;
     private bool _gameStart;
     private bool _gameClear;
 
